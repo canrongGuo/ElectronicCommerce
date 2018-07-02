@@ -1,0 +1,138 @@
+/*头部*/
+
+.header {
+    height: 170px;
+    position: relative;
+}
+
+.header-bg {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 160px;
+}
+
+.header-bg img {
+    width: 100%;
+    height: 100%;
+}
+
+.header-top {
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+}
+
+.header-top span {
+    margin-right: 12px;
+}
+
+.header-portrait {
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    width: 66px;
+    height: 66px;
+    margin-left: -33px;
+}
+
+
+/*信息部分*/
+
+#message .message {
+    margin-top: 10px;
+    text-align: center;
+}
+
+#message .message-name {
+    height: 30px;
+    line-height: 30px;
+}
+
+#message .message-name span {
+    font-size: 18px;
+    color: #404040;
+}
+
+#message .message-name i {
+    font-size: 20px;
+    color: #B35AE0;
+}
+
+#message .message-audit {
+    line-height: 20px;
+    height: 20px;
+    font-size: 12px;
+}
+
+#message .message-audit span {
+    color: #404040;
+}
+
+#message .message-audit em {
+    color: #26D6CC;
+}
+
+#message .message-xing {
+    font-size: 20px;
+    line-height: 20px;
+}
+
+#message .message-xing i {
+    color: #26D6CC;
+}
+
+#message .message-xing span {
+    color: #464646;
+    font-size: 14px;
+}
+
+
+/*功能模块*/
+
+#function .function{
+  margin-top: 20px;
+}
+#function .function-title{
+  width: 90%;
+  font-size: 14px;
+  color: #464646;
+  line-height: 40px;
+  margin-bottom: 10px;
+}
+#function .function-each{
+  width: 90%;
+  border-bottom: 1px solid #ccc;
+}
+
+#function .function-block{
+  position:relative;
+  width: 60px;
+  height: 55px;
+  margin-bottom: 20px;
+}
+
+#function .function-block-icon{
+  line-height: 30px;
+  text-align: center;
+}
+#function .function-block-icon i{
+  font-size: 26px;
+}
+#function .function-block-text{
+  font-size: 14px;
+  color: #464646;
+  line-height: 20px;
+  text-align: center;
+}
+
+#function .function-img-icon{
+  width:34px;
+  height: 34px;
+  margin: auto;
+}
+#function .function-img-icon img{
+  width: 100%;
+  height:20px;
+  margin-top: 7px;
+}

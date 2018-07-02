@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>共享卡</title>
+    <link rel="stylesheet" type="text/css" href="../../css/aui/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/normal.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/font/public.css" />
+    <script type="text/javascript" src="../../script/normal.js"></script>
+    <script type="text/javascript" src="../../script/jquery-1.11.2.min.js"></script>
+    <style>
+        body {}
+        /*卡*/
+        .card{padding: 1%;position: relative;}
+        .card img{width: 100%;border-radius: 10px;}
+        .card .logo{position:absolute;top: 5px;right: 5px;width: 50px;height: 50px;padding: 10px;}
+        .card .logo img{width: 100%;height: 100%;border-radius: 50%;}
+        /*刷码*/
+        .brush{padding: 3%;}
+        .brush .button{font-size: 17px;text-align: center;height: 35px;line-height: 35px;color: #26d6cc;border: 1px solid #26d6cc;border-radius: 5px;}
+        /*购卡换卡*/
+        .buyCard{}
+        .buyCard .row{padding: 0 3%;border-bottom: 1px solid #eee;line-height: 40px;}
+        .buyCard .row:first-of-type{border-top: 1px solid #eee;}
+        .buyCard .row div:nth-of-type(2){text-align: left;color: #666;font-size: 14px;padding-left: 10px;}
+        .buyCard .row i.icon.iconfont{font-size: 20px;color: #26d6cc;}
+        /*申明*/
+        .declare{padding: 12% 3%;}
+        .declare p{font-size: 12px;height: 25px;}
+        /*弹出框*/
+        .modal{width: 100%;height: 100%;position: fixed;top: 0;left: 0;z-index: 999999;}
+        .modal.hidden{display: none;}
+        .modal .modal_bg{width: 100%;height: 100%;position: fixed;background: #000;opacity: 0.25;}
+        .modal .m_content{position:relative;z-index:1000000;top: 50%;margin-top: -30%;width: 65%;margin-left: 17.5%;}
+        .modal .m_content .m_body{margin: 0 auto;background: #fff;border-radius: 5px;}
+        .modal .m_content .m_body img{border-radius: 5px;width: 100%;}
+    </style>
+</head>
+
+<body>
+    <header>
+        <ul class="header">
+            <li class="border-b active">
+                <span>共享卡</span>
+            </li>
+        </ul>
+    </header>
+    <div class="headerLine"></div>
+    <!--卡-->
+    <div class="card">
+        <div class="logo" tapmode onclick="openModal();">
+            <img src="../../image/home/home_chanpin.png"/>
+        </div>
+        <img src="../../image/card/card.png"/>
+    </div>
+    <!--刷码-->
+    <div class="brush">
+        <div class="button" tapmode onclick="openChildWin('qrcode');">刷码</div>
+    </div>
+    <!--购卡换卡-->
+    <div class="buyCard">
+        <div class="row" tapmode onclick="openChildWin('exchangeCard');">
+            <div class="aui-col-xs-1"><i class="icon iconfont">&#xe60f;</i></div>
+            <div class="aui-col-xs-11">兑换共享卡</div>
+            <div style="clear:both;"></div>
+        </div>
+        <div class="row" tapmode onclick="openChildWin('buyCard');">
+            <div class="aui-col-xs-1"><i class="icon iconfont">&#xe62b;</i></div>
+            <div class="aui-col-xs-11">购买共享卡</div>
+            <div style="clear:both;"></div>
+        </div>
+    </div>
+    <!--说明-->
+    <div class="declare">
+        <p>本卡使用魔礼平台全国所有联盟及共享商家使用</p>
+        <p>本卡最终解释权归魔礼平台所有</p>
+    </div>
+    <!--详情预览-->
+    <div class="modal hidden" id="shopModal">
+        <div class="modal_bg" tapmode onclick="closeModal();"></div>
+        <div class="m_content">
+            <div class="m_body">
+                <img src="../../image/home/home_chanpin.png"/>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+
+    };
+
+
+    //打开详情模态框
+    function openModal(){
+        $("#shopModal").removeClass("hidden");
+        document.ontouchstart=function(){
+    		return false;
+    	}
+    }
+
+    //关闭详情模态框
+    function closeModal(){
+        $("#shopModal").addClass("hidden");
+        document.ontouchstart=function(){
+    		return true;
+    	}
+    }
+
+</script>
+
+</html>

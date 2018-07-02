@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>收货地址</title>
+    <link rel="stylesheet" type="text/css" href="../../../css/aui/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/normal.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/font/public.css" />
+    <script type="text/javascript" src="../../../script/normal.js"></script>
+    <script type="text/javascript" src="../../../script/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="../../../script/aui/aui-dialog.js"></script>
+    <style>
+        body {}
+        .addAddress{padding: 3%;margin-top: 10%;}
+        .addAddress div{height:40px;line-height: 40px;background: #26d6cc;color: #fff;text-align: center;border-radius: 5px;}
+        .profile .row div:first-of-type:active{background: #eee;}
+        .profile .row{position: relative;clear: both;}
+        .profile .row .list{line-height: 35px;height: 35px;font-size: 14px;padding: 0 5%;color: #666;}
+        .profile .row .list:nth-of-type(3){border-top: 1px solid #eee;border-bottom: 1px solid #ddd;}
+        .profile .row .aui-radio{width: 16px;height:16px;margin-top: 10px;position: relative;border-color: #26d6cc;}
+        .profile .row.active .aui-radio .checked{width: 8px;height: 8px;position: absolute;border-radius: 50%;top: 50%;background: #26d6cc;left: 50%;margin-top: -4px;margin-left: -4px;}
+        .profile .row .row.list .button{position:absolute;top: 0;right: 0;}
+        .profile .row .row.list .button:first-of-type{right: 50px;}
+        .profile .row .button{position: absolute;right: 3%;bottom: 7px;font-size: 14px;color: #666;}
+        .profile .row .button span{padding: 0 10px;}
+    </style>
+</head>
+
+<body>
+    <header>
+        <ul class="header">
+            <li class="border-b active">
+                <div class="header_btn" onclick="goback();" tapmode >
+                    <img class="addGroup" src="../../../image/goback.png"/>
+                </div>
+                <span>收货地址</span>
+            </li>
+        </ul>
+    </header>
+    <div class="headerLine"></div>
+    <!--收货地址-->
+    <div class="profile">
+        <div class="row active">
+            <div tapmode onclick="selectAddress(this);">
+                <div class="row list">
+                    <div class="aui-col-xs-4">何先生</div>
+                    <div class="aui-col-xs-8">13000000000</div>
+                </div>
+                <div class="row list">
+                    <div class="aui-col-xs-12 aui-ellipsis-1">河南省郑州市金水区优胜北路318号河南省郑州市金水区优胜北路318号河南省郑州市金水区优胜北路318号</div>
+                </div>
+                <div class="row list">
+                    <div class="aui-col-xs-6">
+                        <span class="aui-radio">
+                            <i class="checked"></i>
+                        </span>
+                        <span>默认地址</span>
+                    </div>
+                </div>
+            </div>
+            <div class="button">
+                <span>编辑</span>
+                <span tapmode onclick="deleteAddr();">删除</span>
+            </div>
+        </div>
+        <div class="row">
+            <div tapmode onclick="selectAddress(this);">
+                <div class="row list">
+                    <div class="aui-col-xs-4">何先生</div>
+                    <div class="aui-col-xs-8">13000000000</div>
+                </div>
+                <div class="row list">
+                    <div class="aui-col-xs-12 aui-ellipsis-1">河南省郑州市金水区优胜北路318号河南省郑州市金水区优胜北路318号河南省郑州市金水区优胜北路318号</div>
+                </div>
+                <div class="row list">
+                    <div class="aui-col-xs-6">
+                        <span class="aui-radio">
+                            <i class="checked"></i>
+                        </span>
+                        <span>默认地址</span>
+                    </div>
+                </div>
+            </div>
+            <div class="button">
+                <span>编辑</span>
+                <span tapmode onclick="deleteAddr();">删除</span>
+            </div>
+        </div>
+    </div>
+    <!--若没有收货地址-->
+    <div class="addAddress" tapmode onclick="openChildWin('addAddress');">
+        <div>添加收货地址</div>
+    </div>
+</body>
+<script type="text/javascript" src="../../../script/api.js"></script>
+<script type="text/javascript">
+    var dialog = new auiDialog({})
+    apiready = function() {
+
+    };
+
+    //删除收货地址
+    function deleteAddr(){
+        dialog.alert({
+            title:"确认信息",
+            msg:'确认要删除收货地址吗？',
+            buttons:['我再想想','我想好了']
+        },function(ret){
+            var index = ret.buttonIndex;
+            if(index == 2){
+                alert("删除成功！");
+            }
+        })
+    }
+
+    //选择收货地址
+    function selectAddress(dom){
+        $(dom).parent().addClass("active").siblings().removeClass("active");
+    }
+</script>
+
+</html>

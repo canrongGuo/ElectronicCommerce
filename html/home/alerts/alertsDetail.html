@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../../../css/aui/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/normal.css" />
+    <script type="text/javascript" src="../../../script/normal.js"></script>
+    <script type="text/javascript" src="../../../script/jquery-1.11.2.min.js"></script>
+    <style>
+        body{background: #fff;}
+        header.aui-bar.aui-bar-nav{background-color:#26d6cc;}
+        .alertList{height: 45px;line-height: 45px;}
+        .alertList li{position: relative;}
+        .alertList p{padding-left: 30px;line-height: 25px;}
+        .dot{display: inline-block;width: 0.4rem;height: 0.4rem;background: #ff2600;border-radius: 0.5rem;position: absolute;top: 19px;left: 10px;}
+    </style>
+</head>
+
+<body>
+    <header>
+        <ul class="header">
+            <li class="border-b active">
+                <div class="header_btn" onclick="goback();" tapmode >
+                    <img class="addGroup" src="../../../image/goback.png"/>
+                </div>
+                <span>消息通知</span>
+            </li>
+        </ul>
+    </header>
+    <div class="headerLine"></div>
+    <ul class="alertList">
+        <li>
+            <span class="dot"></span>
+            <p id="content"></p>
+        </li>
+    </ul>
+</body>
+<script type="text/javascript" src="../../../script/api.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+        var content = api.pageParam.content;
+        $("#content").html(content);
+    };
+</script>
+
+</html>

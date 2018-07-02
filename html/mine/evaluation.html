@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../../css/aui/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/normal.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/font/public.css" />
+    <script type="text/javascript" src="../../script/normal.js"></script>
+    <script type="text/javascript" src="../../script/aui/aui-tab.js" ></script>
+    <script type="text/javascript" src="../../script/jquery-1.11.2.min.js" ></script>
+    <script type="text/javascript" src="../../script/aui/aui-list-swipe.js"></script>
+    <style>
+        body {}
+        .daCard{height: 35px;line-height: 35px;color: #26d6cc;font-size: 14px;padding: 0 3%;}
+        .cumulative{text-align: center;color: #26d6cc;line-height: 100px;height: 120px;}
+        .cumulative p{line-height: 35px;font-size: 16px;}
+        .cumulative span:first-of-type{font-size: 100px;font-weight: bold;}
+        .score{width: 190px;margin: 0 auto;}
+        .score img.star{width: 30px;height: 30px;float: left;margin-right: 10px;}
+        .score img.star:last-of-type{margin-right:0;}
+        /*评价记录*/
+        .title{line-height: 45px;height: 45px;color: #666;border-top: 1px solid #ddd;margin-top: 10%;padding: 0 3%;}
+        /*评价*/
+        .number{height: 45px;line-height: 45px;padding: 0 5%;color: #666;}
+        .aui-list .aui-list-item-media {width: 3rem;}
+        #evaluation .aui-list .aui-list-item-media img{width: 90%;border-radius: 50%;}
+        #evaluation .aui-info{justify-content: flex-end;}
+        #evaluation .aui-info-item > *, .aui-info > *{line-height: 30px;}
+        .scoreStar{color: #333;}
+        .scoreStar .iconfont{color: #26d6cc;margin-right: 0;}
+        #evaluation .aui-list .aui-list-item-text{display: block;}
+    </style>
+</head>
+
+<body>
+    <header>
+        <ul class="header">
+            <li class="border-b active">
+                <div class="header_btn" onclick="goback();" tapmode>
+                    <img class="addGroup" src="../../image/goback.png"/>
+                </div>
+                <span>我的评价</span>
+            </li>
+        </ul>
+    </header>
+    <div class="headerLine"></div>
+    <!--评价-->
+    <div class="daCard">评价得分</div>
+    <div class="cumulative">
+        <span>4</span>
+        <span>星</span>
+    </div>
+    <div class="score">
+        <img class="star" src="../../image/home/home_star1.png"/>
+        <img class="star" src="../../image/home/home_star1.png"/>
+        <img class="star" src="../../image/home/home_star1.png"/>
+        <img class="star" src="../../image/home/home_star1.png"/>
+        <img class="star" src="../../image/home/home_star.png"/>
+        <div style="clear:both;"></div>
+    </div>
+    <!--评级得分-->
+    <div class="title">评价记录</div>
+    <!--评价-->
+    <div class="content hidden" id="evaluation">
+        <section class="aui-content">
+            <ul class="aui-list aui-media-list">
+                <li class="aui-list-item">
+                    <div class="aui-media-list-item-inner">
+                        <div class="aui-list-item-media">
+                            <img src="../../image/home/home_chanpin.png" />
+                        </div>
+                        <div class="aui-list-item-inner">
+                            <div class="aui-list-item-text">
+                                <div class="aui-list-item-title" style="color:#4c5276">小单纯呀</div>
+                            </div>
+                            <!--评价分数-->
+                            <div class="aui-list-item-text scoreStar">
+                                打分
+                                <i class="icon iconfont">&#xe642;</i>
+                                <i class="icon iconfont">&#xe642;</i>
+                                <i class="icon iconfont">&#xe642;</i>
+                                <i class="icon iconfont">&#xe642;</i>
+                            </div>
+                            <!--文字评论-->
+                            <div class="aui-list-item-text" style="color:#333;">网传“贴吧之父”俞军加入滴滴</div>
+                            <!--图片评论-->
+                            <div class="aui-list-item-text">
+                                <div class="aui-row-padded" style="max-width:90%;">
+                                    <div class="aui-col-xs-4">
+                                        <img src="../../image/home/home_chanpin.png" />
+                                    </div>
+                                    <div class="aui-col-xs-4">
+                                        <img src="../../image/home/home_chanpin.png" />
+                                    </div>
+                                    <div class="aui-col-xs-4">
+                                        <img src="../../image/home/home_chanpin.png" />
+                                    </div>
+                                </div>
+                                <div style="clear:both;"></div>
+                            </div>
+                            <div class="aui-info aui-font-size-12 aui-padded-t-0 aui-padded-b-0">
+                                <div class="aui-info-item aui-pull-right">2018-05-10</div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="aui-list-item">
+                    <div class="aui-media-list-item-inner">
+                        <div class="aui-list-item-media">
+                            <img src="../../image/home/home_chanpin.png" />
+                        </div>
+                        <div class="aui-list-item-inner">
+                            <div class="aui-list-item-text">
+                                <div class="aui-list-item-title" style="color:#4c5276">小单纯呀</div>
+                            </div>
+                            <!--评价分数-->
+                            <div class="aui-list-item-text scoreStar">
+                                打分
+                                <i class="icon iconfont">&#xe642;</i>
+                                <i class="icon iconfont">&#xe642;</i>
+                                <i class="icon iconfont">&#xe642;</i>
+                                <i class="icon iconfont">&#xe642;</i>
+                            </div>
+                            <!--文字评论-->
+                            <div class="aui-list-item-text" style="color:#333;">美团、饿了么外卖小哥斗殴：约架中关村</div>
+                            <!--图片评论-->
+                            <div class="aui-list-item-text">
+                                <div style="clear:both;"></div>
+                            </div>
+                            <div class="aui-info aui-font-size-12 aui-padded-t-0 aui-padded-b-0">
+                                <div class="aui-info-item">2018-05-11</div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="aui-list-item">
+                    <div class="aui-media-list-item-inner">
+                        <div class="aui-list-item-media">
+                            <img src="../../image/home/home_chanpin.png" />
+                        </div>
+                        <div class="aui-list-item-inner">
+                            <div class="aui-list-item-text">
+                                <div class="aui-list-item-title" style="color:#4c5276">小单纯呀</div>
+                            </div>
+                            <!--评价分数-->
+                            <div class="aui-list-item-text scoreStar">
+                                打分
+                                <i class="icon iconfont">&#xe642;</i>
+                                <i class="icon iconfont">&#xe642;</i>
+                                <i class="icon iconfont">&#xe642;</i>
+                                <i class="icon iconfont">&#xe642;</i>
+                                <i class="icon iconfont">&#xe642;</i>
+                            </div>
+                            <!--文字评论-->
+                            <div class="aui-list-item-text" style="color:#333;">网传“贴吧之父”俞军加入滴滴</div>
+                            <!--图片评论-->
+                            <div class="aui-list-item-text">
+                                <div class="aui-row-padded" style="max-width:90%;">
+                                    <div class="aui-col-xs-4">
+                                        <img src="../../image/home/home_chanpin.png" />
+                                    </div>
+                                    <div class="aui-col-xs-4">
+                                        <img src="../../image/home/home_chanpin.png" />
+                                    </div>
+                                    <div class="aui-col-xs-4">
+                                        <img src="../../image/home/home_chanpin.png" />
+                                    </div>
+                                    <div class="aui-col-xs-4">
+                                        <img src="../../image/home/home_chanpin.png" />
+                                    </div>
+                                </div>
+                                <div style="clear:both;"></div>
+                            </div>
+                            <div class="aui-info aui-font-size-12 aui-padded-t-0 aui-padded-b-0">
+                                <div class="aui-info-item aui-pull-right">2018-05-10</div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+
+    };
+</script>
+
+</html>

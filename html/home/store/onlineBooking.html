@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>在线预定</title>
+    <link rel="stylesheet" type="text/css" href="../../../css/aui/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/normal.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/aui/aui-slide.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/font/public.css" />
+    <script type="text/javascript" src="../../../script/aui/aui-slide.js"></script>
+    <script type="text/javascript" src="../../../script/normal.js"></script>
+    <script type="text/javascript" src="../../../script/aui/aui-tab.js" ></script>
+    <script type="text/javascript" src="../../../script/jquery-1.11.2.min.js"></script>
+    <style>
+        body {background: #f1f1f1;}
+        .iconfont{font-size: 20px;color: #fff;margin-right: 12px;}
+        .addGroup.share{right: 0;width: auto;top:0;}
+        .addGroup.share img{width: 30px;float: left;}
+        .addGroup.share img:first-of-type{margin-right: 10px;}
+        /*推荐商家*/
+        .tuijian{margin-top: 5px;background-color: #fff;height: 45px;line-height: 45px;text-align: center;border-bottom: 1px solid #ddd;}
+        #businessList{border-bottom:1px solid #ddd;}
+        #businessList div.aui-tab-item.tapmode.active{color: #26d6cc;}
+        .score img.star{width: 18px;height: 18px;float: left;margin-top: 11px;}
+        .score_footer .label{border: 1px solid #26d6cc;border-radius: 5px;padding: 0px 10px;color: #26d6cc;font-size: 12px;}
+        .content{background: #fff;}
+        .content .name{line-height: 25px;font-size: 15px;}
+        .content .score{line-height: 40px;margin-top:0px;}
+        .content p{margin-top: 5px;}
+        .content .score_footer{font-size: 11px;}
+        .content .list{padding: 10px;border-bottom:1px solid #ddd;position: relative;}
+        .content .listL:last-of-type{padding: 10px;border-bottom:none;}
+        .phoneNumber{position: absolute;top: 30px;right: 0px;z-index: 999;width: 50px;height: 50px;line-height: 50px;}
+        .phoneNumber i.icon{color: #333;font-size: 26px;}
+        .preferential{padding: 2.5% 8%;border-bottom: 1px solid #ddd;font-size: 13px;background:#fff;}
+        /*公告*/
+        .announcement{padding-bottom: 15px;background: #fff;}
+        .announcementLine{border-bottom: 1px solid #ccc;}
+        .announcement .title{height: 45px;line-height: 45px;text-align: center;color: #666;}
+        .announcement .content{text-align: center;padding: 0 10%;}
+        .announcement .content p{margin-bottom: 5px;}
+        /*输入框*/
+        .inputMsg{background: #fff;padding:10% 15%;font-size: 14px;background: #fff;}
+        .inputMsg .aui-input, input[type="text"], input[type="date"]{height: 20px;line-height: 18px;border-bottom: 1px solid #ddd;font-size: 14px;padding-left: 10px;}
+        .inputMsg .row{height: 40px;}
+        .inputMsg .row .label{float: left;padding: 0px 10px;color: #26d6cc;border-radius: 4px;border: 1px solid #26d6cc;margin-left:10px;}
+        .inputMsg .row .label.active{background: #26d6cc;color: #fff;}
+        .nowBook{height: 45px;line-height: 45px;width: 100%;background: #26d6cc;color: #fff;text-align: center;margin-bottom:2px;}
+    </style>
+</head>
+
+<body>
+    <header>
+        <ul class="header">
+            <li class="border-b active">
+                <div class="header_btn" onclick="goback();" tapmode >
+                    <img class="addGroup" src="../../../image/goback.png"/>
+                </div>
+                <span class="aui-elliplis-1">在线预定</span>
+                <div class="addGroup share">
+                    <i class="icon iconfont" tapmode onclick="shareShop();">&#xe643;</i>
+                    <i class="icon iconfont">&#xe608;</i>
+                </div>
+            </li>
+        </ul>
+    </header>
+    <div class="headerLine"></div>
+    <!--轮播图-->
+    <div id="aui-slide">
+        <div class="aui-slide-wrap">
+            <div class="aui-slide-node bg-dark">
+                <img src="../../../image/menuDetail/shopBanner.png" />
+            </div>
+            <div class="aui-slide-node bg-dark">
+                <img src="../../../image/menuDetail/shopBanner.png" />
+            </div>
+            <div class="aui-slide-node bg-dark">
+                <img src="../../../image/menuDetail/shopBanner.png" />
+            </div>
+        </div>
+        <!--分页容器-->
+        <div class="aui-slide-page-wrap"></div>
+    </div>
+    <!--商店信息-->
+    <section class="content" id="storeList">
+        <div class="list" data-type="我呀便当（商定路店）">
+            <div class="aui-col-xs-3">
+                <img src="../../../image/home/home_chanpin.png"/>
+            </div>
+            <div class="aui-col-xs-9" style="text-align:left;padding-left: 10px;">
+                <div class="name aui-ellipsis-1">我呀便当（商定路店）</div>
+                <div class="score">
+                    <img class="star" src="../../../image/home/home_star1.png"/>
+                    <img class="star" src="../../../image/home/home_star1.png"/>
+                    <img class="star" src="../../../image/home/home_star1.png"/>
+                    <img class="star" src="../../../image/home/home_star1.png"/>
+                    <img class="star" src="../../../image/home/home_star.png"/>
+                    <span class="mariginLeft">4分</span>
+                </div>
+                <p>地址：鹤壁市溧阳路向东500米左转</p>
+            </div>
+            <div class="phoneNumber" tapmode onclick="call();"><i class="icon iconfont">&#xe686;</i></div>
+            <div style="clear:both;"></div>
+        </div>
+    </section>
+    <!--优惠信息-->
+    <div class="preferential">
+        <div class="row">
+            <div class="aui-col-xs-3">满减</div>
+            <div class="aui-col-xs-9">满20减5</div>
+        </div>
+        <div class="row">
+            <div class="aui-col-xs-3">加价兑</div>
+            <div class="aui-col-xs-9">特色菜品消费满168元，加1元送凉菜一份。</div>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+    <!--公告-->
+    <div class="announcement">
+        <div class="title">公告</div>
+        <div class="content">
+            <p>特色菜品消费满168元，加1元送凉菜一份</p>
+            <p>特色菜品消费满168元，加1元送凉菜一份</p>
+            <p>特色菜品消费满168元，加1元送凉菜一份</p>
+        </div>
+    </div>
+    <div class="announcementLine"></div>
+    <!--输入信息-->
+    <div class="inputMsg">
+        <div class="row">
+            <div class="aui-col-xs-3">到店时间</div>
+            <div class="aui-col-xs-9"><input type="date" placeholder="请输入时间"/></div>
+            <div style="clear:both;"></div>
+        </div>
+        <div class="row">
+            <div class="aui-col-xs-3">就餐人数</div>
+            <div class="aui-col-xs-9"><input type="text" placeholder="请输入人数"/></div>
+        </div>
+        <div class="row">
+            <div class="aui-col-xs-3">就餐环境</div>
+            <div class="aui-col-xs-9">
+                <div class="label" tapmode onclick="changeActive(this);">包间</div>
+                <div class="label active" tapmode onclick="changeActive(this);">大厅</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="aui-col-xs-3">备餐要求</div>
+            <div class="aui-col-xs-9">
+                <div class="label" tapmode onclick="changeActive(this);">提前做好</div>
+                <div class="label active" tapmode onclick="changeActive(this);">到店等侯</div>
+            </div>
+        </div>
+    </div>
+    <div class="nowBook" tapmode onclick="openChildWin('bookOrder');">立即预订</div>
+</body>
+<script type="text/javascript" src="../../../script/api.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+
+    };
+
+    //切换选中效果
+    function changeActive(dom){
+        $(dom).addClass("active").siblings().removeClass("active");
+    }
+
+    //轮播图js
+    var slide = new auiSlide({
+        container:document.getElementById("aui-slide"),
+        // "width":300,
+        "height":150,
+        "speed":300,
+        "autoPlay": 3000,
+        "pageShow":true,
+        "pageStyle":'dot',
+        "loop":true,
+        'dotPosition':'right',
+        'currentPage':currentFun
+    })
+    function currentFun(index) {
+    }
+
+    //弹出底部导航
+    function shareShop(){
+        api.actionSheet({
+            title: '商店分享',
+            cancelTitle: '取消',
+            buttons: ['QQ', '微信', '微博']
+        }, function(ret, err) {
+            var index = ret.buttonIndex;
+            alert("分享成功！");
+        });
+    }
+</script>
+
+</html>

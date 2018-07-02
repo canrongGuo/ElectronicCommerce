@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../../../css/aui/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/normal.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/font/public.css" />
+    <script type="text/javascript" src="../../../script/normal.js"></script>
+    <script type="text/javascript" src="../../../script/jquery-1.11.2.min.js"></script>
+    <style>
+        body {}
+        .content{padding: 4%;}
+        .content .row:first-of-type div img{width: 100px;height: 100px;}
+        .content .row:first-of-type div.aui-col-xs-8{height: 100px;line-height: 100px;padding-left: 7%;font-size: 15px;color: #666;}
+        .aui-list .aui-list-item-label, .aui-list .aui-list-item-label-icon{color: #666;font-size: 14px;}
+        .aui-list .aui-list-item{border:none;padding: 0;}
+        input[type="text"],select{font-size: 14px;}
+        .address ul li div{font-size: 14px;}
+        .aui-list-item-label{width: 40%;}
+        .aui-list .aui-list-item-title{line-height: 45px;}
+        .textCenter{text-align: center;}
+        .aui-list-item .aui-media-list-item-inner:active{background: #fff;}
+        input[type="text"]{border-bottom: 1px solid #ddd;}
+    </style>
+</head>
+
+<body>
+    <header>
+        <ul class="header">
+            <li class="border-b active">
+                <div class="header_btn" onclick="goback();" tapmode >
+                    <img class="addGroup" src="../../../image/goback.png"/>
+                </div>
+                <span>我是商家</span>
+                <div class="addGroup text" tapmode onclick="openChildWin('success');">提交</div>
+            </li>
+        </ul>
+    </header>
+    <div class="headerLine"></div>
+    <!--上传信息-->
+    <div class="content">
+        <div class="row">
+            <div class="aui-col-xs-4">
+                <img tapmode onclick="uploadLogo();" src="../../../image/mine/uploadImg1.png"/>
+            </div>
+            <div class="aui-col-xs-8">上传门店封面照片</div>
+            <div style="clear:both;"></div>
+        </div>
+        <!--认证信息-->
+        <div class="address">
+            <ul class="aui-list aui-form-list">
+                <li class="aui-list-item">
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-label">我的门店：</div>
+                        <div class="aui-list-item-input">
+                            <input type="text" placeholder="请输入店铺名称">
+                        </div>
+                    </div>
+                </li>
+                <li class="aui-list-item">
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-label">所属行业：</div>
+                        <div class="aui-list-item-input">
+                            <select>
+                                <option>早餐</option>
+                                <option>午餐</option>
+                                <option>西餐</option>
+                                <option>甜点</option>
+                            </select>
+                        </div>
+                    </div>
+                </li>
+                <li class="aui-list-item" tapmode onclick="selectArea();">
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-label">门店地址：</div>
+                        <div class="aui-list-item-input" id="areaName">河南省-郑州市-管城回族区</div>
+                    </div>
+                </li>
+                <li class="aui-list-item" style="padding:0;">
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-label" style="width:100%;">
+                            <textarea style="border:1px solid #ddd;width:100%;" placeholder="备注详情地址"></textarea>
+                        </div>
+                    </div>
+                </li>
+                <li class="aui-list-item">
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-label">法人代表：</div>
+                        <div class="aui-list-item-input">
+                            <input type="text" placeholder="请输入法人代表名字">
+                        </div>
+                    </div>
+                </li>
+                <li class="aui-list-item">
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-label">联系电话：</div>
+                        <div class="aui-list-item-input">
+                            <input type="text" placeholder="请输入手机号码">
+                        </div>
+                    </div>
+                </li>
+                <li class="aui-list-item">
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-label">营业执照号：</div>
+                        <div class="aui-list-item-input">
+                            <input type="text" placeholder="请输入营业执照号">
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul class="aui-list aui-media-list">
+                <li class="aui-list-item">
+                    <div class="aui-media-list-item-inner">
+                        <div class="aui-list-item-inner" style="padding:0;">
+                            <div class="aui-list-item-text">
+                                <div class="aui-list-item-title title">商家从业资格证：</div>
+                            </div>
+                            <div class="aui-list-item-text row">
+                                <div class="aui-col-xs-6">
+                                    <img src="../../../image/mine/uploadImg1.png" tapmode onclick="uploadLogo();"/>
+                                    <p class="textCenter">营业执照</p>
+                                </div>
+                                <div class="aui-col-xs-6">
+                                    <img src="../../../image/mine/uploadImg1.png" tapmode onclick="uploadLogo();"/>
+                                    <p class="textCenter">卫生经营许可证</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../../../script/api.js"></script>
+<script type="text/javascript">
+    var addressView = "";
+    apiready = function() {
+        api.parseTapmode();
+        addressView = api.require('addressView');
+        addressView.open({
+            file_addr: 'widget://res/district.txt', //数据源地址
+            selected_color: '#ff0000', //颜色
+            pro_id: 410000, //省id
+            city_id: 410100, //市id
+            dir_id: 410104 //区id
+        });
+    };
+
+    //选择区域
+    function selectArea(){
+        addressView.show({}, function(ret, err) {
+            if (ret.status) {
+                var data = ret.data;
+                $("#areaName").html(data[0].name+"-"+data[1].name+"-"+data[2].name);
+            }
+        });
+    }
+
+    //上传身份正
+    function uploadLogo(){
+        api.actionSheet({
+            // title: '底部弹出框测试',
+            cancelTitle: '取消',
+            buttons: ['从手机相册', '相机']
+        }, function(ret, err) {
+            var index = ret.buttonIndex;
+            if(index == 1 || index == 2){
+                openPic(index=="1"?"album":"camera");
+            }
+        });
+    }
+
+    //打开相册或者照相机
+    function openPic(type){
+        api.getPicture({
+            sourceType:type,
+            encodingType: 'jpg',
+            mediaValue: 'pic',
+            destinationType: 'url',
+            allowEdit: true,
+            quality: 100,
+            targetWidth: 200,
+            targetHeight: 200,
+            saveToPhotoAlbum: false
+        }, function(ret, err) {
+            if(!!ret.data || ret.data != ""){
+
+            }
+        });
+    }
+</script>
+
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>在线预定</title>
+    <link rel="stylesheet" type="text/css" href="../../../css/aui/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/normal.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/font/public.css" />
+    <script type="text/javascript" src="../../../script/normal.js"></script>
+    <script type="text/javascript" src="../../../script/jquery-1.11.2.min.js"></script>
+    <style>
+        body {color: #333;font-size: 13px;}
+        .score img.star{width: 23px;height: 23px;float: left;margin-right: 10px;}
+        .score span{float: left;margin-top: -9px;}
+        .shop{line-height: 40px;font-size: 20px;border-bottom: 1px solid #ddd;padding-bottom: 5px;position: relative;padding:0 20px;}
+        .right{position: absolute;right: 20px;top: 0;height: 76px;line-height: 76px;}
+        .textRight{text-align: right;}
+        /*预定清单*/
+        .bookList{padding:0 20px;border-bottom: 1px solid #ddd;padding-bottom: 15px;}
+        .bookList.specil{padding: 5% 20px;padding-bottom: 10%;}
+        .bookList .title{height: 45px;line-height: 45px;border-bottom: 1px solid #bbb;}
+        .lineHeight{line-height: 35px;height: 35px;}
+        .lineHeight .aui-col-xs-2.aui-ellipsis-1.none{color:#fff;}
+        .bookList .total{margin-top: 30px;text-align: right;}
+        .bookList .total span{color: red;font-size: 20px;}
+        /*支付按钮*/
+        .button{border-top: 1px solid #26d6cc;border-bottom: 1px solid #26d6cc;}
+        .button div.aui-col-xs-6{height: 50px;line-height: 50px;text-align: center;font-size: 16px;}
+        .button div.aui-col-xs-6:nth-of-type(2){background: #26d6cc;color: #fff;}
+    </style>
+</head>
+
+<body>
+    <header>
+        <ul class="header">
+            <li class="border-b active">
+                <div class="header_btn" onclick="goback();" tapmode >
+                    <img class="addGroup" src="../../../image/goback.png"/>
+                </div>
+                <span>预定详情</span>
+            </li>
+        </ul>
+    </header>
+    <div class="headerLine"></div>
+    <!--门店消息-->
+    <div class="shop" tapmode onclick="goback();">
+        <div>我呀便当（商定路店）</div>
+        <div class="score">
+            <img class="star" src="../../../image/home/home_star1.png"/>
+            <img class="star" src="../../../image/home/home_star1.png"/>
+            <img class="star" src="../../../image/home/home_star1.png"/>
+            <img class="star" src="../../../image/home/home_star1.png"/>
+            <img class="star" src="../../../image/home/home_star.png"/>
+            <span>4分</span>
+            <div style="clear:both;"></div>
+        </div>
+        <div class="right"><i class="icon iconfont">&#xe63f;</i></div>
+    </div>
+    <!--预定清单-->
+    <div class="bookList">
+        <div class="title">预定清单</div>
+        <div class="row">
+            <div class="aui-col-xs-12 lineHeight">
+                <div class="aui-col-xs-8 aui-ellipsis-1">冰纯嘉士伯</div>
+                <div class="aui-col-xs-2 aui-ellipsis-1">6听</div>
+                <div class="aui-col-xs-2 aui-ellipsis-1 textRight">188元</div>
+                <div style="clear:both;"></div>
+            </div>
+            <div class="aui-col-xs-12 lineHeight">
+                <div class="aui-col-xs-8 aui-ellipsis-1">水果拼盘</div>
+                <div class="aui-col-xs-2 aui-ellipsis-1">1份</div>
+                <div class="aui-col-xs-2 aui-ellipsis-1 textRight">20元</div>
+                <div style="clear:both;"></div>
+            </div>
+            <div class="aui-col-xs-12 lineHeight">
+                <div class="aui-col-xs-8 aui-ellipsis-1">预定费</div>
+                <div class="aui-col-xs-2 aui-ellipsis-1 none">123</div>
+                <div class="aui-col-xs-2 aui-ellipsis-1 textRight">12元</div>
+                <div style="clear:both;"></div>
+            </div>
+        </div>
+        <!--合计-->
+        <div class="total">合计：<span>220元</span></div>
+    </div>
+    <!--订单详情-->
+    <div class="bookList specil">
+        <div class="row">
+            <div class="aui-col-xs-12 lineHeight">
+                <div class="aui-col-xs-3 aui-ellipsis-1">到店日期</div>
+                <div class="aui-col-xs-9 aui-ellipsis-1">2018/05/11</div>
+                <div style="clear:both;"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="aui-col-xs-12 lineHeight">
+                <div class="aui-col-xs-3 aui-ellipsis-1">就餐人数</div>
+                <div class="aui-col-xs-9 aui-ellipsis-1">2人</div>
+                <div style="clear:both;"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="aui-col-xs-12 lineHeight">
+                <div class="aui-col-xs-3 aui-ellipsis-1">就餐环境</div>
+                <div class="aui-col-xs-9 aui-ellipsis-1">包间</div>
+                <div style="clear:both;"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="aui-col-xs-12 lineHeight">
+                <div class="aui-col-xs-3 aui-ellipsis-1">备餐要求</div>
+                <div class="aui-col-xs-9 aui-ellipsis-1">到店等候</div>
+                <div style="clear:both;"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="aui-col-xs-12 lineHeight">
+                <div class="aui-col-xs-3 aui-ellipsis-1">备注：</div>
+                <div class="aui-col-xs-9">阿斯顿发大水范德萨撒打发士大夫撒旦飞洒地方撒旦发是否撒旦飞洒的法撒旦f</div>
+                <div style="clear:both;"></div>
+            </div>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+    <div class="row button">
+        <div class="aui-col-xs-6">联系商家</div>
+        <div class="aui-col-xs-6">立即支付</div>
+        <div style="clear:both;"></div>
+    </div>
+</body>
+<script type="text/javascript" src="../../../script/api.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+
+    };
+</script>
+
+</html>

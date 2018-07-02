@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>添加收货地址</title>
+    <link rel="stylesheet" type="text/css" href="../../../css/aui/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/normal.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/font/public.css" />
+    <script type="text/javascript" src="../../../script/normal.js"></script>
+    <script type="text/javascript" src="../../../script/jquery-1.11.2.min.js"></script>
+    <style>
+        body {}
+        .address ul li .sex span.aui-radio{border-color:#26d6cc;width: 20px;height: 20px;margin-top: 1.2%;position:relative;}
+        .address ul li .sex.active span.aui-radio i.circle{position: absolute;top:50%;left:50%;width: 10px;height: 10px;border-radius: 50%;background: #26d6cc;z-index: 9999;margin-top:-5px;margin-left: -5px;}
+        .button{padding:3%}
+        .button div{height: 40px;line-height: 40px;background: #26d6cc;color:#fff;text-align: center;border-radius: 5px;margin-top: 10%;}
+    </style>
+</head>
+
+<body>
+    <header>
+        <ul class="header">
+            <li class="border-b active">
+                <div class="header_btn" onclick="goback();" tapmode >
+                    <img class="addGroup" src="../../../image/goback.png"/>
+                </div>
+                <span>添加收货地址</span>
+            </li>
+        </ul>
+    </header>
+    <div class="headerLine"></div>
+    <!--填写收货信息-->
+    <div class="address">
+        <ul class="aui-list aui-form-list">
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-label">收件人</div>
+                    <div class="aui-list-item-input">
+                        <input type="text" placeholder="2~8个字">
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-label">性别</div>
+                    <div class="aui-list-item-input">
+                        <label class="sex active" tapmode onclick="select(this);" style="margin-right:10px;">
+                            <span>女</span>
+                            <span class="aui-radio">
+                                <i class="circle"></i>
+                            </span>
+                        </label>
+                        <label class="sex" tapmode onclick="select(this);">
+                            <span>男</span>
+                            <span class="aui-radio">
+                                <i class="circle"></i>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item" tapmode onclick="selectArea();">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-label">省/市/区</div>
+                    <div class="aui-list-item-input aui-list-item-arrow" id="areaName">河南省-郑州市-管城回族区</div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-label">详情地址</div>
+                    <div class="aui-list-item-input">
+                        <input type="text" placeholder="5~65个字">
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-label">您的电话</div>
+                    <div class="aui-list-item-input">
+                        <input type="text" placeholder="最少7位">
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="button">
+        <div>保存</div>
+    </div>
+</body>
+<script type="text/javascript" src="../../../script/api.js"></script>
+<script type="text/javascript">
+    var addressView = "";
+    apiready = function() {
+        addressView = api.require('addressView');
+        addressView.open({
+            file_addr: 'widget://res/district.txt', //数据源地址
+            selected_color: '#ff0000', //颜色
+            pro_id: 410000, //省id
+            city_id: 410100, //市id
+            dir_id: 410104 //区id
+        });
+    };
+
+    //选择区域
+    function selectArea(){
+        addressView.show({}, function(ret, err) {
+            if (ret.status) {
+                var data = ret.data;
+                $("#areaName").html(data[0].name+"-"+data[1].name+"-"+data[2].name);
+            }
+        });
+    }
+
+    //选中
+    function select(dom){
+        $(dom).addClass("active").siblings().removeClass("active");
+    }
+</script>
+
+</html>

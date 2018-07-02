@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>兑换共享卡</title>
+    <link rel="stylesheet" type="text/css" href="../../css/aui/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/normal.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/font/public.css" />
+    <script type="text/javascript" src="../../script/normal.js"></script>
+    <script type="text/javascript" src="../../script/jquery-1.11.2.min.js"></script>
+    <style>
+        body {}
+        /*卡*/
+        .card{padding: 1%;position: relative;}
+        .card img{width: 100%;border-radius: 10px;}
+        /*兑换输入*/
+        .input{padding: 10% 15%;}
+        .input .row{height: 45px;}
+        .input .row div{font-size: 15px;color: #666;}
+        .input input[type="text"]{height: 24px;border-bottom: 1px solid #ddd;font-size: 14px;}
+        /*立即兑换*/
+        .rightNow{padding: 0 5%;}
+        .rightNow .button{height: 45px;line-height: 45px;text-align: center;background: #26d6cc;color: #fff;border-radius: 5px;}
+        /*弹出框*/
+        .modal{width: 100%;height: 100%;position: fixed;top: 0;left: 0;z-index: 999999;}
+        .modal.hidden{display: none;}
+        .modal .modal_bg{width: 100%;height: 100%;position: fixed;background: #000;opacity: 0.25;}
+        .modal .m_content{position:relative;z-index:1000000;top: 50%;margin-top: -30%;width: 65%;margin-left: 17.5%;}
+        .modal .m_content .m_body{margin: 0 auto;background: #fff;border-radius: 5px;}
+        .modal .m_content .m_body img{border-radius: 5px;width: 100%;}
+        .modal .msg{text-align: center;font-size: 13px;padding: 15% 18%;}
+    </style>
+</head>
+
+<body>
+    <header>
+        <ul class="header">
+            <li class="border-b active">
+                <div class="header_btn" onclick="goback();" tapmode >
+                    <img class="addGroup" src="../../image/goback.png"/>
+                </div>
+                <span>兑换共享卡</span>
+            </li>
+        </ul>
+    </header>
+    <div class="headerLine"></div>
+    <!--卡-->
+    <div class="card">
+        <img src="../../image/card/card.png"/>
+    </div>
+    <!--兑换输入-->
+    <div class="input">
+        <div class="row">
+            <div class="aui-col-xs-4">兑换年限</div>
+            <div class="aui-col-xs-8">1年</div>
+            <div style="clear:both;"></div>
+        </div>
+        <div class="row">
+            <div class="aui-col-xs-4">兑换密码</div>
+            <div class="aui-col-xs-8"><input type="text" placeholder="密码"/></div>
+            <div style="clear:both;"></div>
+        </div>
+    </div>
+    <!--立即兑换-->
+    <div class="rightNow">
+        <div class="button" tapmode onclick="openModal();">立即兑换</div>
+    </div>
+    <!--弹出框-->
+    <div class="modal hidden" id="shopModal">
+        <div class="modal_bg" tapmode onclick="exchange();"></div>
+        <div class="m_content">
+            <div class="m_body msg">
+                哇~好厉害，恭喜兑换成功
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+
+    };
+
+    //立即兑换
+    function exchange(){
+        var sysType = api.systemType;
+        openChildWin('uploadPic',"{'type':'upload'}");
+        if(sysType == "ios"){
+            setTimeout(function(){
+                api.closeWin({
+                    name: 'exchangeCard'
+                });
+            },500);
+        }else{
+            api.closeWin({
+                name: 'exchangeCard',
+                animation:{
+                    type:"none"             //动画过渡时间，默认300毫秒
+                }
+            });
+        }
+    }
+
+    //打开详情模态框
+    function openModal(){
+        $("#shopModal").removeClass("hidden");
+        document.ontouchstart=function(){
+    		return false;
+    	}
+    }
+
+    //关闭详情模态框
+    function closeModal(){
+        $("#shopModal").addClass("hidden");
+        document.ontouchstart=function(){
+    		return true;
+    	}
+    }
+</script>
+
+</html>

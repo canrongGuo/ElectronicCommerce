@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>安全中心</title>
+    <link rel="stylesheet" type="text/css" href="../../../css/aui/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/normal.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/font/public.css" />
+    <script type="text/javascript" src="../../../script/normal.js"></script>
+    <script type="text/javascript" src="../../../script/jquery-1.11.2.min.js"></script>
+    <style>
+        body {}
+        .address ul li .sex span.aui-radio{border-color:#26d6cc;width: 20px;height: 20px;margin-top: 1.2%;position:relative;}
+        .address ul li .sex.active span.aui-radio i.circle{position: absolute;top:50%;left:50%;width: 10px;height: 10px;border-radius: 50%;background: #26d6cc;z-index: 9999;margin-top:-5px;margin-left: -5px;}
+    </style>
+</head>
+
+<body>
+    <header>
+        <ul class="header">
+            <li class="border-b active">
+                <div class="header_btn" onclick="goback();" tapmode>
+                    <img class="addGroup" src="../../../image/goback.png"/>
+                </div>
+                <span>安全中心</span>
+            </li>
+        </ul>
+    </header>
+    <div class="headerLine"></div>
+    <!--list-->
+    <div class="list">
+        <ul class="aui-list aui-list-in">
+            <li class="aui-list-item" tapmode onclick="openChildWin('loginPassword');">
+                <div class="aui-list-item-inner aui-list-item-arrow">
+                    <span>登陆密码</span>
+                </div>
+            </li>
+            <li class="aui-list-item" tapmode onclick="openChildWin('payPassword');">
+                <div class="aui-list-item-inner aui-list-item-arrow">
+                    <span>支付密码</span>
+                </div>
+            </li>
+            <li class="aui-list-item" tapmode onclick="openChildWin('phoneNumber');">
+                <div class="aui-list-item-inner aui-list-item-arrow">
+                    <span>手机号码</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+<script type="text/javascript" src="../../../script/api.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+
+    };
+</script>
+
+</html>

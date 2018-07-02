@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>门店详情</title>
+    <link rel="stylesheet" type="text/css" href="../../../css/aui/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/normal.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/aui/aui-slide.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/font/public.css" />
+    <script type="text/javascript" src="../../../script/aui/aui-slide.js"></script>
+    <script type="text/javascript" src="../../../script/normal.js"></script>
+    <script type="text/javascript" src="../../../script/aui/aui-tab.js" ></script>
+    <script type="text/javascript" src="../../../script/jquery-1.11.2.min.js"></script>
+    <style>
+        body {background: #f1f1f1;}
+        .line{width: 100;border-bottom: 1px solid #ddd;}
+        .lineThrough{text-decoration: line-through;}
+        .iconfont{font-size: 20px;color: #fff;margin-right: 12px;}
+        .addGroup.share{right: 0;width: auto;top:0;}
+        .addGroup.share img{width: 30px;float: left;}
+        .addGroup.share img:first-of-type{margin-right: 10px;}
+        /*推荐商家*/
+        .tuijian{margin-top: 5px;background-color: #fff;height: 45px;line-height: 45px;text-align: center;border-bottom: 1px solid #ddd;}
+        #businessList{border-bottom:1px solid #ddd;}
+        #businessList div.aui-tab-item.tapmode.active{color: #26d6cc;}
+        .score img.star{width: 18px;height: 18px;float: left;margin-top: 11px;}
+        .score_footer .label{border: 1px solid #26d6cc;border-radius: 5px;padding: 0px 10px;color: #26d6cc;font-size: 12px;}
+        .content{background: #fff;}
+        .content .name{line-height: 25px;font-size: 15px;}
+        .content .score{line-height: 40px;margin-top:-5px;}
+        .content p{margin-top: 5px;}
+        .content .score_footer{font-size: 11px;}
+        .content .list{padding: 10px;border-bottom:1px solid #ddd;position: relative;}
+        .content .listL:last-of-type{padding: 10px;border-bottom:none;}
+        .phoneNumber{position: absolute;top: 30px;right: 0px;z-index: 999;width: 50px;height: 50px;line-height: 50px;}
+        .phoneNumber i.icon{color: #333;font-size: 26px;}
+        .preferential{padding: 2.5% 8%;border-bottom: 1px solid #ddd;font-size: 13px;background:#fff;}
+        /*预定信息*/
+        .bookInfo{background: #fff;}
+        .bookInfo .lineThrough{height: 35px;line-height: 35px;}
+        .bookInfo .label{padding: 0 10px;border: 1px solid #ddd;color: #ccc;border-radius: 5px;}
+        .bookInfo .label.active{border-color: #26d6cc;color: #26d6cc;}
+        .bookInfo .title{height: 45px;line-height: 45px;padding: 0 2.5%;}
+        .bookInfo .number{font-size: 12px;text-align: right;}
+        .bookInfo .aui-list .aui-list-item-media{width: 6.5rem;height: 103px;}
+        /*商家信息*/
+        .announcement{padding-bottom: 15px;background: #fff;}
+        .announcementLine{border-bottom: 1px solid #ccc;}
+        .announcement .title{height: 45px;line-height: 45px;text-align: center;color: #666;}
+        .announcement .content{text-align: left;font-size: 13px;color: #666;padding: 0 15%;}
+        .announcement .content div{height: 30px;line-height: 30px;}
+        /*评价*/
+        .evaluation{background:#fff;}
+        .evaluation .title{height: 45px;line-height: 45px;border-top: 1px solid #ddd;border-bottom: 1px solid #ddd;padding: 0 5%;color: #666;}
+        .evaluation .number{height: 35px;line-height: 35px;padding: 0 5%;color: #666;font-size: 14px;}
+        .evaluation .evaluation.aui-list .aui-list-item-media {width: 3rem;}
+        .evaluation .aui-list .aui-list-item-media img{width: 90%;border-radius: 50%;}
+        .evaluation .aui-info{justify-content: flex-end;}
+        .evaluation .aui-info-item > *, .aui-info > *{line-height: 30px;}
+        .evaluation .scoreStar{color: #333;}
+        .evaluation .scoreStar .iconfont{color: #26d6cc;margin-right: 0;}
+        .evaluation .aui-list .aui-list-item-text{display: block;}
+        /*弹出框*/
+        .modal{width: 100%;height: 100%;position: fixed;top: 0;left: 0;z-index: 999999;}
+        .modal.hidden{display: none;}
+        .modal .modal_bg{width: 100%;height: 100%;position: fixed;background: #000;opacity: 0.25;}
+        .modal .m_content{position:relative;z-index:1000000;top: 50%;margin-top: -30%;width: 65%;margin-left: 17.5%;}
+        .modal .m_content .m_body{margin: 0 auto;background: #fff;border-radius: 5px;}
+        .modal .m_content .m_body img{border-radius: 5px;}
+        .modal .m_content .m_body .b_title{color:#666;text-align: center;height: 55px;line-height: 55px;}
+        .modal .m_content .m_body .b_instruct{padding: 5% 10%;padding-top: 0;}
+        .modal .m_content .m_body .b_instruct p{margin-bottom: 15px;}
+
+        .fontSize14{font-size: 14px;color: #666;}
+    </style>
+</head>
+
+<body>
+    <header>
+        <ul class="header">
+            <li class="border-b active">
+                <div class="header_btn" onclick="goback();" tapmode >
+                    <img class="addGroup" src="../../../image/goback.png"/>
+                </div>
+                <span>门店详情</span>
+            </li>
+        </ul>
+    </header>
+    <div class="headerLine"></div>
+    <!--轮播图-->
+    <div id="aui-slide">
+        <div class="aui-slide-wrap">
+            <div class="aui-slide-node bg-dark">
+                <img src="../../../image/menuDetail/shopBanner.png" />
+            </div>
+            <div class="aui-slide-node bg-dark">
+                <img src="../../../image/menuDetail/shopBanner.png" />
+            </div>
+            <div class="aui-slide-node bg-dark">
+                <img src="../../../image/menuDetail/shopBanner.png" />
+            </div>
+        </div>
+        <!--分页容器-->
+        <div class="aui-slide-page-wrap"></div>
+    </div>
+    <!--商店信息-->
+    <section class="content" id="storeList">
+        <div class="list" data-type="我呀便当（商定路店）">
+            <div class="aui-col-xs-3">
+                <img src="../../../image/home/home_chanpin.png"/>
+            </div>
+            <div class="aui-col-xs-9" style="text-align:left;padding-left: 10px;">
+                <div class="name aui-ellipsis-1">我呀便当（商定路店）</div>
+                <div class="score">
+                    <img class="star" src="../../../image/home/home_star1.png"/>
+                    <img class="star" src="../../../image/home/home_star1.png"/>
+                    <img class="star" src="../../../image/home/home_star1.png"/>
+                    <img class="star" src="../../../image/home/home_star1.png"/>
+                    <img class="star" src="../../../image/home/home_star.png"/>
+                    <span class="mariginLeft">4分</span>
+                </div>
+                <div class="row fontSize14">
+                    <div class="aui-col-xs-6">可预定204份</div>
+                    <div class="aui-col-xs-6">可售享卡500张</div>
+                </div>
+                <p>地址：鹤壁市溧阳路向东500米左转</p>
+            </div>
+            <div class="phoneNumber" tapmode onclick="call();"><i class="icon iconfont">&#xe686;</i></div>
+            <div style="clear:both;"></div>
+        </div>
+    </section>
+    <!--预订信息-->
+    <div class="bookInfo">
+        <div class="title">预定</div>
+        <ul class="aui-list aui-media-list">
+            <li class="aui-list-item" tapmode onclick="openModal();">
+                <div class="aui-media-list-item-inner">
+                    <div class="aui-list-item-media">
+                        <img src="../../../image/share/shareShop.png">
+                    </div>
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-text">
+                            <div class="aui-list-item-title">价值168豪华标间</div>
+                        </div>
+                        <div class="aui-list-item-text">
+                            <div class="aui-col-xs-6 lineThrough">168</div>
+                            <div class="aui-col-xs-6"><span class="aui-pull-right label">已预定</span></div>
+                        </div>
+                        <div class="aui-list-item-text number">
+                            <div class="aui-col-xs-12">可预订168份</div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item" tapmode onclick="openModal();">
+                <div class="aui-media-list-item-inner">
+                    <div class="aui-list-item-media">
+                        <img src="../../../image/share/shareShop.png">
+                    </div>
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-text">
+                            <div class="aui-list-item-title">价值168豪华标间</div>
+                        </div>
+                        <div class="aui-list-item-text">
+                            <div class="aui-col-xs-6 lineThrough">168</div>
+                            <div class="aui-col-xs-6"><span class="aui-pull-right label active">预定</span></div>
+                        </div>
+                        <div class="aui-list-item-text number">
+                            <div class="aui-col-xs-12">可预订168份</div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!--公告-->
+    <div class="announcement">
+        <div class="title">商家信息</div>
+        <div class="content">
+            <div class="aui-col-xs-12">概述以及环境</div>
+            <div class="row">
+                <div class="aui-col-xs-3">营业时间</div>
+                <div class="aui-col-xs-9">早：09:00 —— 晚22：00</div>
+                <div style="clear:both"></div>
+            </div>
+            <div class="row">
+                <div class="aui-col-xs-3">预定时间</div>
+                <div class="aui-col-xs-9">早：11:00 —— 晚14：00</div>
+                <div style="clear:both"></div>
+            </div>
+            <div class="aui-col-xs-12">店内有免费wifi，以及停车位</div>
+            <div style="clear:both"></div>
+        </div>
+    </div>
+    <!--评价-->
+    <div class="evaluation">
+        <div class="title">评价</div>
+        <!--评论条数-->
+        <div class="number">
+            <div class="aui-pull-left">852条评价</div>
+            <div class="aui-pull-right">查看更多</div>
+            <div style="clear:both;"></div>
+        </div>
+        <section class="aui-content">
+            <ul class="aui-list aui-media-list">
+                <li class="aui-list-item">
+                    <div class="aui-media-list-item-inner">
+                        <div class="aui-list-item-media">
+                            <img src="../../../image/home/home_chanpin.png" />
+                        </div>
+                        <div class="aui-list-item-inner">
+                            <div class="aui-list-item-text">
+                                <div class="aui-list-item-title" style="color:#4c5276">小单纯呀</div>
+                            </div>
+                            <!--评价分数-->
+                            <div class="aui-list-item-text scoreStar">
+                                打分
+                                <i class="icon iconfont">&#xe642;</i>
+                                <i class="icon iconfont">&#xe642;</i>
+                                <i class="icon iconfont">&#xe642;</i>
+                                <i class="icon iconfont">&#xe642;</i>
+                            </div>
+                            <!--文字评论-->
+                            <div class="aui-list-item-text" style="color:#333;">网传“贴吧之父”俞军加入滴滴</div>
+                            <!--图片评论-->
+                            <div class="aui-list-item-text">
+                                <div class="aui-row-padded" style="max-width:90%;">
+                                    <div class="aui-col-xs-4">
+                                        <img src="../../../image/home/home_chanpin.png" />
+                                    </div>
+                                    <div class="aui-col-xs-4">
+                                        <img src="../../../image/home/home_chanpin.png" />
+                                    </div>
+                                    <div class="aui-col-xs-4">
+                                        <img src="../../../image/home/home_chanpin.png" />
+                                    </div>
+                                </div>
+                                <div style="clear:both;"></div>
+                            </div>
+                            <div class="aui-info aui-font-size-12 aui-padded-t-0 aui-padded-b-0">
+                                <div class="aui-info-item aui-pull-right">2018-05-10</div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="aui-list-item">
+                    <div class="aui-media-list-item-inner">
+                        <div class="aui-list-item-media">
+                            <img src="../../../image/home/home_chanpin.png" />
+                        </div>
+                        <div class="aui-list-item-inner">
+                            <div class="aui-list-item-text">
+                                <div class="aui-list-item-title" style="color:#4c5276">小单纯呀</div>
+                            </div>
+                            <!--评价分数-->
+                            <div class="aui-list-item-text scoreStar">
+                                打分
+                                <i class="icon iconfont">&#xe642;</i>
+                                <i class="icon iconfont">&#xe642;</i>
+                                <i class="icon iconfont">&#xe642;</i>
+                                <i class="icon iconfont">&#xe642;</i>
+                            </div>
+                            <!--文字评论-->
+                            <div class="aui-list-item-text" style="color:#333;">美团、饿了么外卖小哥斗殴：约架中关村</div>
+                            <!--图片评论-->
+                            <div class="aui-list-item-text">
+                                <div style="clear:both;"></div>
+                            </div>
+                            <div class="aui-info aui-font-size-12 aui-padded-t-0 aui-padded-b-0">
+                                <div class="aui-info-item">2018-05-11</div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="aui-list-item">
+                    <div class="aui-media-list-item-inner">
+                        <div class="aui-list-item-media">
+                            <img src="../../../image/home/home_chanpin.png" />
+                        </div>
+                        <div class="aui-list-item-inner">
+                            <div class="aui-list-item-text">
+                                <div class="aui-list-item-title" style="color:#4c5276">小单纯呀</div>
+                            </div>
+                            <!--评价分数-->
+                            <div class="aui-list-item-text scoreStar">
+                                打分
+                                <i class="icon iconfont">&#xe642;</i>
+                                <i class="icon iconfont">&#xe642;</i>
+                                <i class="icon iconfont">&#xe642;</i>
+                                <i class="icon iconfont">&#xe642;</i>
+                                <i class="icon iconfont">&#xe642;</i>
+                            </div>
+                            <!--文字评论-->
+                            <div class="aui-list-item-text" style="color:#333;">网传“贴吧之父”俞军加入滴滴</div>
+                            <!--图片评论-->
+                            <div class="aui-list-item-text">
+                                <div class="aui-row-padded" style="max-width:90%;">
+                                    <div class="aui-col-xs-4">
+                                        <img src="../../../image/home/home_chanpin.png" />
+                                    </div>
+                                    <div class="aui-col-xs-4">
+                                        <img src="../../../image/home/home_chanpin.png" />
+                                    </div>
+                                    <div class="aui-col-xs-4">
+                                        <img src="../../../image/home/home_chanpin.png" />
+                                    </div>
+                                    <div class="aui-col-xs-4">
+                                        <img src="../../../image/home/home_chanpin.png" />
+                                    </div>
+                                </div>
+                                <div style="clear:both;"></div>
+                            </div>
+                            <div class="aui-info aui-font-size-12 aui-padded-t-0 aui-padded-b-0">
+                                <div class="aui-info-item aui-pull-right">2018-05-10</div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </div>
+    <!--详情预览-->
+    <div class="modal hidden" id="shopModal">
+        <div class="modal_bg" tapmode onclick="closeModal();"></div>
+        <div class="m_content">
+            <div class="m_body">
+                <img src="../../../image/menuDetail/shopBanner.png"/>
+                <div class="b_title">歌迷量版式KTV（溧阳路）</div>
+                <div class="b_instruct">
+                    <p>地址：鹤壁市溧阳路向东500米左转</p>
+                    <p>价值168豪华标间</p>
+                    <p>可预订168份</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../../../script/api.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+
+    };
+
+    //打开详情模态框
+    function openModal(){
+        $("#shopModal").removeClass("hidden");
+        document.ontouchstart=function(){
+    		return false;
+    	}
+    }
+
+    //关闭详情模态框
+    function closeModal(){
+        $("#shopModal").addClass("hidden");
+        document.ontouchstart=function(){
+    		return true;
+    	}
+    }
+
+    //轮播图js
+    var slide = new auiSlide({
+        container:document.getElementById("aui-slide"),
+        // "width":300,
+        "height":150,
+        "speed":300,
+        "autoPlay": 3000,
+        "pageShow":true,
+        "pageStyle":'dot',
+        "loop":true,
+        'dotPosition':'right',
+        'currentPage':currentFun
+    })
+    function currentFun(index) {
+    }
+</script>
+
+</html>

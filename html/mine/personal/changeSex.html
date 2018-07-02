@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>修改性别</title>
+    <link rel="stylesheet" type="text/css" href="../../../css/aui/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/normal.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/font/public.css" />
+    <script type="text/javascript" src="../../../script/normal.js"></script>
+    <script type="text/javascript" src="../../../script/jquery-1.11.2.min.js"></script>
+    <style>
+        body {}
+        .list ul li div div:first-of-type{height: 55px;line-height: 55px;}
+        .list ul li div input{text-align: right;}
+        .list ul li div span.aui-radio{border: 1px solid #26d6cc;position: relative;}
+        .list ul li.active div span.aui-radio i.circle{position: absolute;top:50%;left:50%;width: 15px;height: 15px;border-radius: 50%;background: #26d6cc;z-index: 9999;margin-top:-7.5px;margin-left: -7.5px;}
+    </style>
+</head>
+
+<body>
+    <header>
+        <ul class="header">
+            <li class="border-b active">
+                <div class="header_btn" onclick="goback();" tapmode >
+                    <img class="addGroup" src="../../../image/goback.png"/>
+                </div>
+                <span>性别</span>
+                <div class="addGroup text">保存</div>
+            </li>
+        </ul>
+    </header>
+    <div class="headerLine"></div>
+    <!--性别-->
+    <div class="list">
+        <ul class="aui-list aui-select-list">
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner">
+                    性别选择
+                </div>
+            </li>
+            <li class="aui-list-item active" tapmode onclick="select(this);">
+                <div class="aui-list-item-inner">
+                    <span>男</span>
+                    <span class="aui-radio aui-pull-right"><i class="circle"></i></span>
+                    <div style="clear:both;height:0;"></div>
+                </div>
+            </li>
+            <li class="aui-list-item" tapmode onclick="select(this);">
+                <div class="aui-list-item-inner">
+                    <span>女</span>
+                    <span class="aui-radio aui-pull-right"><i class="circle"></i></span>
+                    <div style="clear:both;height:0"></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+<script type="text/javascript" src="../../../script/api.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+
+    };
+
+    //选中
+    function select(dom){
+        $(dom).addClass("active").siblings().removeClass("active");
+    }
+</script>
+
+</html>

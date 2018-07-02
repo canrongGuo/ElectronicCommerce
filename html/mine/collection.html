@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../../css/aui/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/normal.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/font/public.css" />
+    <script type="text/javascript" src="../../script/normal.js"></script>
+    <script type="text/javascript" src="../../script/aui/aui-tab.js" ></script>
+    <script type="text/javascript" src="../../script/jquery-1.11.2.min.js" ></script>
+    <script type="text/javascript" src="../../script/aui/aui-list-swipe.js"></script>
+    <style>
+        .aui-list-item-inner.aui-swipe-handle {overflow-x: hidden;position: relative;z-index: 1;background-color: #ffffff;}
+        .aui-swipe-btn {position: absolute;right: 1px;top: 0;z-index: 0;height: 99%;-webkit-box-sizing: border-box;box-sizing: border-box;display: -webkit-box;display: -webkit-flex;display: flex;-webkit-box-flex: 1;-webkit-box-pack: justify;-webkit-justify-content: space-between;justify-content: space-between;-webkit-box-align: center;-webkit-align-items: center;align-items: center;}
+        .aui-swipe-btn .aui-btn {border-radius: 0;height: 100%;-webkit-box-sizing: border-box;box-sizing: border-box;display: -webkit-box;display: -webkit-flex;display: flex;-webkit-box-align: center;-webkit-align-items: center;align-items: center;}
+        .donghua {-webkit-transition-duration:300ms;transition-duration:300ms;}
+        .aui-tab-item{border:1px solid #26d6cc;color: #26d6cc;}
+        .aui-tab-item.aui-active{border: none;background: #26d6cc;color:#fff;}
+        /*商家收藏*/
+        .score img.star{width: 18px;height: 18px;float: left;margin-top: 11px;}
+        .score_footer .label{border: 1px solid #26d6cc;border-radius: 5px;padding: 0px 10px;color: #26d6cc;font-size: 12px;}
+        .content{background: #fff;}
+        .content.hidden{display: none;}
+        .content div{line-height: 20px;}
+        .content .datalist{position: relative;}
+        .content .name{line-height: 25px;font-size: 15px;}
+        .content .score{line-height: 40px;margin-top:-5px;}
+        .content p{margin-top: -5px;padding: 5px 0;}
+        .content .score_footer{font-size: 11px;}
+        .content .list{padding: 10px;border-bottom:1px solid #ddd;position: relative;z-index: 1;background: #fff;}
+        .content .listL:last-of-type{padding: 10px;border-bottom:none;}
+        .newFee{font-size: 16px;color: red;}
+    </style>
+</head>
+
+<body>
+    <header>
+        <ul class="header">
+            <li class="border-b active">
+                <div class="header_btn" onclick="goback();" tapmode>
+                    <img class="addGroup" src="../../image/goback.png"/>
+                </div>
+                <span>我的收藏</span>
+            </li>
+        </ul>
+    </header>
+    <div class="headerLine" style="height:61px;"></div>
+    <!--tap框-->
+    <div class="aui-tab hidden" id="table">
+        <div class="aui-tab-item tapmode aui-active">点餐</div>
+        <div class="aui-tab-item tapmode">商家</div>
+    </div>
+    <!--商家收藏-->
+    <section class="content" id="storeList">
+        <div class="datalist" data-type="我呀便当（商定路店）">
+            <div class="list aui-swipe-handle" tapmode onclick="">
+                <div class="aui-col-xs-4">
+                    <img src="../../image/home/home_chanpin.png"/>
+                </div>
+                <div class="aui-col-xs-8" style="text-align:left;padding-left: 10px;">
+                    <div class="name aui-ellipsis-1">我呀便当（商定路店）</div>
+                    <div class="score">
+                        <img class="star" src="../../image/home/home_star1.png"/>
+                        <img class="star" src="../../image/home/home_star1.png"/>
+                        <img class="star" src="../../image/home/home_star1.png"/>
+                        <img class="star" src="../../image/home/home_star1.png"/>
+                        <img class="star" src="../../image/home/home_star.png"/>
+                        <span class="mariginLeft">4分</span>
+                    </div>
+                    <p>地址：懂法撒旦飞洒开发了就按时反馈啦士大夫急口令</p>
+                    <div class="score_footer">
+                        <div class="aui-col-xs-5 aui-pull-right">
+                            <span class="aui-col-xs-6">2.0km</span>
+                            <span class="aui-col-xs-6">35分钟</span>
+                        </div>
+                    </div>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+            <div class="aui-swipe-btn">
+                <div class="aui-btn aui-btn-danger" tapmode onclick="alert('删除了');">删除</div>
+            </div>
+        </div>
+        <div class="datalist" data-type="我呀便当（商定路店）">
+            <div class="list aui-swipe-handle" tapmode onclick="">
+                <div class="aui-col-xs-4">
+                    <img src="../../image/home/home_chanpin.png"/>
+                </div>
+                <div class="aui-col-xs-8" style="text-align:left;padding-left: 10px;">
+                    <div class="name aui-ellipsis-1">我呀便当（商定路店）</div>
+                    <div class="score">
+                        <img class="star" src="../../image/home/home_star1.png"/>
+                        <img class="star" src="../../image/home/home_star1.png"/>
+                        <img class="star" src="../../image/home/home_star1.png"/>
+                        <img class="star" src="../../image/home/home_star1.png"/>
+                        <img class="star" src="../../image/home/home_star.png"/>
+                        <span class="mariginLeft">4分</span>
+                    </div>
+                    <p>地址：懂法撒旦飞洒开发了就按时反馈啦士大夫急口令</p>
+                    <div class="score_footer">
+                        <div class="aui-col-xs-5 aui-pull-right">
+                            <span class="aui-col-xs-6">2.0km</span>
+                            <span class="aui-col-xs-6">35分钟</span>
+                        </div>
+                    </div>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+            <div class="aui-swipe-btn">
+                <div class="aui-btn aui-btn-danger" tapmode onclick="alert('删除了');">删除</div>
+            </div>
+        </div>
+    </section>
+    <!--商品收藏-->
+    <section class="content hidden" id="goodsList">
+        <div class="datalist" data-type="我呀便当（商定路店）">
+            <div class="list aui-swipe-handle" tapmode onclick="">
+                <div class="aui-col-xs-4">
+                    <img src="../../image/home/home_chanpin.png"/>
+                </div>
+                <div class="aui-col-xs-8" style="text-align:left;padding-left: 10px;">
+                    <div class="name aui-ellipsis-1">我呀便当（商定路店）</div>
+                    <!-- <div class="name aui-ellipsis-1">待付款</div> -->
+                    <div class="score">
+                        <img class="star" src="../../image/home/home_star1.png"/>
+                        <img class="star" src="../../image/home/home_star1.png"/>
+                        <img class="star" src="../../image/home/home_star1.png"/>
+                        <img class="star" src="../../image/home/home_star1.png"/>
+                        <img class="star" src="../../image/home/home_star.png"/>
+                        <span class="mariginLeft">4分</span>
+                    </div>
+                    <p class="newFee">￥：24.59</p>
+                    <div class="score_footer" style="font-size:13px;">
+                        <div class="aui-col-xs-6">原价：25.59</div>
+                        <div class="aui-col-xs-6" style="text-align:right;">35分钟</div>
+                    </div>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+            <div class="aui-swipe-btn">
+                <div class="aui-btn aui-btn-danger" tapmode onclick="alert('删除了');">删除</div>
+            </div>
+        </div>
+    </section>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+
+    };
+    var swipe = new auiListSwipe(function(ret){
+        // console.log(ret)
+    });
+
+    //头部tab框方法
+    var tab = new auiTab({
+        element:document.getElementById("table"),
+        index:1,
+        repeatClick:false
+    },function(ret){
+        var index = ret.index;
+        if(index == 1 || index == "1"){
+            $("#storeList").removeClass("hidden");
+            $("#goodsList").addClass("hidden");
+        }else if(index == 2 || index == "2"){
+            $("#storeList").addClass("hidden");
+            $("#goodsList").removeClass("hidden");
+        }
+    });
+</script>
+
+</html>

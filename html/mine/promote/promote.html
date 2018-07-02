@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../../../css/aui/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/normal.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/font/public.css" />
+    <script type="text/javascript" src="../../../script/normal.js"></script>
+    <script type="text/javascript" src="../../../script/jquery-1.11.2.min.js"></script>
+    <style>
+        body {}
+        .line{height: 3px;background: #e1e1e1;width: 100%;}
+        .daCard{height: 35px;line-height: 35px;color: #26d6cc;font-size: 14px;padding: 0 3%;}
+        .cumulative{text-align: center;color: #26d6cc;padding-bottom: 4%;}
+        .cumulative p{line-height: 35px;font-size: 16px;margin-top: -10px;}
+        .cumulative span:first-of-type{font-size: 100px;font-weight: bold;}
+        .title{line-height: 40px;height: 40px;color: #666;border-bottom: 1px solid #ddd;padding: 0 3%;}
+        /*推广列表*/
+        .promoteList .row{padding: 0 3%;line-height: 35px;font-size:12px;}
+        .promoteList .row .aui-col-xs-6{text-align: center;}
+        .promoteList .row .aui-col-xs-2:nth-of-type(1) span{padding-right: 10px;}
+        .promoteList .row .aui-col-xs-2:nth-of-type(1) i.iconfont{color: #b661ff;}
+        /*弹出框*/
+        .modal{width: 100%;height: 100%;position: fixed;top: 0;left: 0;z-index: 999999;}
+        .modal.hidden{display: none;}
+        .modal .modal_bg{width: 100%;height: 100%;position: fixed;background: #000;opacity: 0.25;}
+        .modal .m_content{position:relative;z-index:1000000;top: 50%;margin-top: -30%;width: 80%;margin-left: 10%;}
+        .modal .m_content .m_body{margin: 0 auto;background: #fff;border-radius: 5px;}
+        .modal .m_content .m_body img{border-radius: 5px;width: 100%;}
+        .modal .msg .title{text-align: center;height: 45px;font-size: 16px;line-height: 45px;position: relative;overflow:hidden;}
+        .modal .msg .title span.icon{position: absolute;top: -17px;right: -17px;background: #26d6cc;color: #fff;width: 50px;height: 50px;line-height: 64px;text-align: left;padding-left: 10px;border-radius: 50%;}
+        .modal .msg .content{font-size: 13px;text-align: center;padding: 0 3%;}
+        .modal .msg .content .row{line-height: 25px;}
+        .modal .msg .content .row .aui-col-xs-4:first-of-type{text-align: left}
+    </style>
+</head>
+
+<body>
+    <header>
+        <ul class="header">
+            <li class="border-b active">
+                <div class="header_btn" onclick="goback();" tapmode>
+                    <img class="addGroup" src="../../../image/goback.png"/>
+                </div>
+                <span>我的推广</span>
+                <div class="addGroup text" tapmode onclick="openChildWin('qrcode')">推广码</div>
+            </li>
+        </ul>
+    </header>
+    <div class="headerLine"></div>
+    <!--日历-->
+    <div class="daCard">已推荐</div>
+    <div class="cumulative">
+        <span>2</span>
+        <span>人</span>
+    </div>
+    <div class="line"></div>
+    <!--评级得分-->
+    <div class="title">推广记录</div>
+    <!--推广列表-->
+    <div class="promoteList">
+        <div class="row">
+            <div class="aui-col-xs-10" tapmode onclick="openChildWin('../../home/store/storeDetail','{title:\'哈哈\'}');">
+                <div class="aui-col-xs-2">
+                    <span>4</span>
+                    <i class="icon iconfont">&#xe634;</i>
+                </div>
+                <div class="aui-col-xs-4">13888888888</div>
+                <div class="aui-col-xs-6">2018-05-01 11:11</div>
+                <div style="clear:both;"></div>
+            </div>
+            <div class="aui-col-xs-2" tapmode onclick="openDetail();">查询详情</div>
+            <div style="clear:both;"></div>
+        </div>
+        <div class="row">
+            <div class="aui-col-xs-10" tapmode onclick="openChildWin('../../home/store/storeDetail','{title:\'哈哈\'}');">
+                <div class="aui-col-xs-2">
+                    <span>3</span>
+                    <i class="icon iconfont">&#xe634;</i>
+                </div>
+                <div class="aui-col-xs-4">13888888888</div>
+                <div class="aui-col-xs-6">2018-05-01 11:11</div>
+                <div style="clear:both;"></div>
+            </div>
+            <div class="aui-col-xs-2" tapmode onclick="openDetail();">查询详情</div>
+            <div style="clear:both;"></div>
+        </div>
+    </div>
+    <!--弹出框-->
+    <div class="modal hidden" id="shopModal">
+        <div class="modal_bg" tapmode onclick="closeModal();"></div>
+        <div class="m_content">
+            <div class="m_body msg">
+                <div class="title">
+                    <span>13888888888</span>
+                    <span class="icon iconfont" tapmode onclick="closeModal();">&#xe603;</span>
+                </div>
+                <div class="content">
+                    <div class="row">
+                        <div class="aui-col-xs-4">消费日期</div>
+                        <div class="aui-col-xs-4">消费金额</div>
+                        <div class="aui-col-xs-4">收益金额</div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    <div>
+                        <div class="row">
+                            <div class="aui-col-xs-4">2018-05-15</div>
+                            <div class="aui-col-xs-4">18</div>
+                            <div class="aui-col-xs-4">18</div>
+                            <div style="clear:both;"></div>
+                        </div>
+                        <div class="row">
+                            <div class="aui-col-xs-4">2018-05-15</div>
+                            <div class="aui-col-xs-4">18</div>
+                            <div class="aui-col-xs-4">18</div>
+                            <div style="clear:both;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../../../script/api.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+
+    };
+
+    //打开详情模态框
+    function openDetail(){
+        $("#shopModal").removeClass("hidden");
+    }
+
+    //关闭模态框
+    function closeModal(){
+        $("#shopModal").addClass("hidden");
+    }
+</script>
+
+</html>

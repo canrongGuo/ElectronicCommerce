@@ -1,0 +1,709 @@
+/*
+ * （♒ ）	If there is anything inappropriate, please contact the author. Thank you for your cooperation.  （♒ ）
+ * This style can only be used with apps and some PCS. Please check the comments when using
+ * If you have any problem, please contact the writer wang jun
+ * author=>QQ:1194961901;Email:1194961901@qq.com;
+ * Please be careful when using IE8 and previous versions. The new html5 tag is not compatible.
+ */
+
+
+/*To prevent individual new attributes.*/
+
+* {
+	margin: 0;
+	padding: 0;
+	font-style: normal;
+}
+
+html {
+	font-family: sans-serif;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%
+}
+
+
+/*
+ * back to previous 	(!!!Return according to historical records)
+ * onclick="javascript:history.back(-1)"
+ *
+ */
+
+body {
+	margin: 0;
+	background: #fff;
+}
+
+mark {
+	background-color: #fff;
+}
+
+img,
+a,
+span,
+time,
+{
+	display: inline-block;
+}
+
+em,
+i,
+cite,
+em,
+var,
+address,
+dfn {
+	/*Optional attribute value：
+	 * 1、italic、 2、normal、 3、oblique
+	 * */
+	font-style: normal;
+}
+
+strong {
+	font-weight: normal;
+}
+
+ul {
+	list-style-type: none;
+}
+
+fieldset,
+hr,
+figure {
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+}
+
+ul,
+ol,
+dd,
+legend,
+fieldset {
+	-webkit-padding-start: 0px;
+}
+
+legend,
+fieldset {
+	-webkit-padding-end: 0px;
+}
+
+fieldset {
+	-webkit-padding-before: 0em;
+	-webkit-padding-after: 0em;
+}
+
+ul,
+dl,
+p,
+hr,
+figure {
+	-webkit-margin-before: 0em;
+	-webkit-margin-after: 0em;
+}
+
+input,
+textarea,
+button,
+select,
+fieldset,
+hr {
+	border: none;
+}
+
+input,
+textarea,
+button,
+select {
+	outline: none;
+	background-color: transparent;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+	font-weight: normal;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:active,
+a:hover {
+	outline: 0;
+}
+
+a,
+a:visited {
+	text-decoration: none;
+}
+
+textarea {
+	resize: none;
+	padding: 0;
+}
+
+input:not([type]),
+input[type="email" i],
+input[type="number" i],
+input[type="password" i],
+input[type="tel" i],
+input[type="url" i],
+input[type="text" i] {
+	padding: 0;
+}
+
+input,
+textarea,
+select,
+button,
+meter,
+progress {
+	/*特殊属性
+	 *1、horizontal-tb: =》正常布局流;
+	 * 2、vertical-rl ：=》垂直方向自右而左的书写方式
+	 *3、vertical-lr：=》垂直方向自左而右的书写方式
+	 * lr-tb和tb-rl仅适用于IE，具体请看文档
+	 */
+	-webkit-writing-mode: horizontal-tb;
+}
+
+input:-webkit-autofill {
+	/*input输入框获取焦点是背景黄色去除样式*/
+	-webkit-box-shadow: 0 0 0px 1000px white inset !important;
+	-ms-box-shadow: 0 0 0px 1000px white inset !important;
+	-moz-box-shadow: 0 0 0px 1000px white inset !important;
+	-o-box-shadow: 0 0 0px 1000px white inset !important;
+	box-shadow: 0 0 0px 1000px white inset !important;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;	/*内边距*/
+}
+
+
+/*此处预留放置外部css文件*/
+
+
+/*apiCloud中的通用属性开始*/
+
+label,
+.wordWrap {
+	word-wrap: break-word;
+	word-break: break-all;
+}
+
+td,
+th {
+	padding: 0;
+}
+
+.loading_more {
+	display: block;
+	height: 1.5em;
+	width: 100%;
+}
+
+.loading_more:before {
+	display: inline-block;
+	vertical-align: text-bottom;
+	content: ' ';
+	height: 16px;
+	width: 16px;
+	margin-right: 6px;
+	background: url(../image/loading_more.gif) no-repeat center;
+	-webkit-background-size: contain;
+	background-size: contain;
+}
+
+.loading_more:after {
+	content: '加载更多';
+}
+
+
+/*apiCloud中的通用属性结束*/
+
+
+/*
+ * CSS global variable,Can make a change according to the project application
+ * */
+
+@font-face {
+	/*字体引用（华康少女简体w5.TTC）*/
+	/*font-size: 10px;
+	font-style: normal;
+	font-family:"hksnjt.TTC";
+	src: url("../font/hksnjt.TTC");*/
+}
+
+@font-face {font-family: "iconfont";
+	src: url('iconfont.eot');
+	src: url('iconfont.eot#iefix') format('embedded-opentype'),
+	url('iconfont.woff') format('woff'),
+	url('iconfont.ttf') format('truetype'),
+	url('iconfont.svg#iconfont') format('svg');
+}
+
+.iconfont {
+	font-family: "iconfont" !important;
+	font-size: 16px;
+	font-style: normal;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-stroke-width: 0.2px;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+
+/*===global variable===*/
+
+@supports ( (--a: 0)) {
+	 :root {
+		--keepOut-top: 40px;
+		--keepOut-opacity: 0.5;
+		--button-border-radius: 5px;
+		--button-padding: 5px 0;
+	}
+}
+
+@supports ( not (--a: 0)) {
+	.keepOut {
+		/*遮罩层*/
+		top: 40px;
+		opacity: 0.5;
+	}
+	;
+	.button {
+		/*常用于提交按钮*/
+		border-radius: 5px;
+		padding: 5px 0;
+	}
+	;
+}
+
+
+/*===>
+ *The following is a common class name style.
+ <===*/
+
+.clearfix:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.pull-left {
+	float: left;
+}
+
+.pull-right {
+	float: right;
+}
+
+.marginAuto {
+	margin: auto;
+}
+
+.baiColor {
+	color: #fff !important;
+}
+
+._width {
+	width: 100% !important;
+}
+
+@supports ( (--a: 0)) {
+	/* supported */
+	 :root {
+		--ellipsis-width: 100%;
+		--ellipsis-overflow: hidden;
+		--ellipsis-display: -webkit-box;
+		--ellipsis--webkit-box-orient: vertical;
+	}
+}
+
+@supports ( not (--a: 0)) {
+	/* not supported */
+	.ellipsis01,
+	.ellipsis02,
+	.ellipsis03,
+	.ellipsis04 {
+		width: 100%;
+		overflow: hidden;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+	}
+}
+
+.ellipsis01,
+.ellipsis02,
+.ellipsis03,
+.ellipsis04 {
+	width: var(--ellipsis-width);
+	overflow: var(--ellipsis-overflow);
+	display: var(--ellipsis-display);
+	-webkit-box-orient: var(--ellipsis--webkit-box-orient);
+}
+
+.ellipsis01 {
+	-webkit-line-clamp: 1;
+}
+
+.ellipsis02 {
+	-webkit-line-clamp: 2;
+}
+
+.ellipsis03 {
+	-webkit-line-clamp: 3;
+}
+
+.ellipsis04 {
+	-webkit-line-clamp: 4;
+}
+
+.keepOut {
+	position: fixed;
+	top: var(--keepOut-top);
+	width: 100%;
+	height: 100%;
+	background: #000000;
+	opacity: var(--keepOut-opacity);
+	display: none;
+}
+
+/*=========提交按钮================*/
+
+.button {
+	display: block;
+	width: 90%;
+	margin: auto;
+	border-radius: var(--button-border-radius);
+	padding: var(--button-padding);
+	text-align: center;
+}
+
+.button button {
+	font-size: 18px;
+}
+
+/*==========颜色渐变================*/
+
+.header_bg {
+	/*radial(旋转)*/
+	background: -webkit-linear-gradient(left, rgb(255, 137, 0), rgb(255, 89, 0));
+	/* Safari 5.1 - 6.0 */
+	background: -o-linear-gradient(left, rgb(255, 137, 0), rgb(255, 89, 0));
+	/* Opera 11.1 - 12.0 */
+	background: -moz-linear-gradient(left, rgb(255, 137, 0), rgb(255, 89, 0));
+	/* Firefox 3.6 - 15 */
+	background: linear-gradient(left, rgb(255, 137, 0), rgb(255, 89, 0));
+	/* 标准的语法 */
+}
+
+
+/*============以下所有模块的全局变量====================*/
+
+@supports ( (--a: 0)) {
+	/* supported */
+	 :root {
+		--width-all: 100%;
+	}
+}
+
+@supports ( not (--a: 0)) {
+	/* not supported */
+	.grid-col-xs-12 {
+		/*栅格化*/
+		width: 100%;
+	}
+	.grid-col-xs-6 {
+		width: 50%;
+	}
+}
+
+
+/*===============头部样式================*/
+
+
+/*项目中需自定义：背景颜色;字体大小;字体颜色*/
+
+.header {
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 999;
+	width: 100%;
+	height: 42px;
+	line-height: 42px;
+	font-size: 18px;
+}
+
+.header .header_left {
+	position: absolute;
+	left: 12px;
+	bottom: 0px;
+	width: 70px;
+	text-align: left;
+	z-index: -1;
+}
+
+@supports ( (--a: 0)) {
+	/* supported */
+	.header .header_center {
+		--width: 200;
+		--marginleft: -100px;
+	}
+}
+
+@supports ( not (--a: 0)) {
+	/* not supported */
+	.header .header_center {
+		width: 200px;
+		margin-left: -100px;
+	}
+}
+
+.header .header_center {
+	position: absolute;
+	left: 50%;
+	bottom: 0px;
+	text-align: center;
+	width: calc(var(--width) * 1px);
+	margin-left: var(--marginleft);
+}
+
+.header .header_right {
+	position: absolute;
+	right: 12px;
+	bottom: 0px;
+	width: 50%;
+	text-align: right;
+	z-index: -1;
+}
+
+
+/*========头部为input--->左图标--右input=========*/
+
+.header .header_input {
+	position: absolute;
+	left: 50%;
+	bottom: 8px;
+	width: 70%;
+	height: 24px;
+	margin-left: -30%;
+	border: 1px solid #000;
+	border-radius: 50px;
+}
+
+.header .header_input .input {
+	width: 80%;
+}
+
+.header .header_input .input input {
+	width: 100%;
+	height: 22px;
+	margin-left: 10px;
+	border: none;
+	border-radius: 50px;
+}
+
+.header .header_input .search {
+	margin-right: 10px;
+}
+
+.header .header_input .search em {
+	/*放大镜分割线*/
+	margin-right: 5px;
+	color: #e3e3e4;
+}
+
+.header .header_input .search i {
+	/*放大镜*/
+	font-size: 14px;
+	color: #000;
+}
+
+
+/*================底部tab================*/
+
+.footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	z-index: 50;
+	background: #fff;
+	width: 100%;
+	height: 50px;
+	padding-top: 7px;
+	border-top: 1px solid #B4B4B4;
+	display: flex;
+}
+
+.footer .footer_each {
+	position: relative;
+	width: 50%;
+	height: 60px;
+	justify-content: space-around;
+}
+
+.footer .footer_each p {
+	margin: 0;
+	text-align: center;
+	color: #000;
+	font-size: 10px;
+}
+
+.footer .footer_each p img {
+	width: 26px;
+	height: 26px;
+	margin-bottom: 5px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.footer .footer_each .footer_action {
+	color: #669933 !important;
+}
+
+
+/*【当底部为iconfont图标时】*/
+
+.footer .footer_each p i {
+	font-size: 30px;
+	color: #5C5C5C;
+}
+
+
+/*中部icon图标(当中部图标大于两边图标时【footer_center_img--footer_center_title】)*/
+
+.footer .footer_each .footer_center_img {
+	position: absolute;
+	top: -25px;
+	left: 50%;
+	width: 50px;
+	height: 50px;
+	margin-left: -25px;
+}
+
+.footer .footer_each .footer_center_img img {
+	width: 100%;
+	height: 100%;
+}
+
+.footer .footer_each .footer_center_title {
+	position: absolute;
+	bottom: 8px;
+	left: 50%;
+	margin-left: -12px;
+}
+
+
+/*=============导航切换===================*/
+
+.nav {
+	width: 100%;
+	height: 50px;
+	display: flex;
+	justify-content: space-around;
+	/*justify-content: space-between;*/
+}
+
+.nav .nav_each {
+	width: 50%;
+	text-align: center;
+}
+
+.navToggle_mian .indent_each_block {
+	display: none;
+}
+
+.navToggle_mian .indent_each_block:first-child {
+	display: block;
+}
+
+
+/*=============grid（栅格式布局）==================*/
+
+
+/*	使用方法（grid-row：可自行定义宽高）
+ * <div class="grid-row grid-row-box clearfix">
+<div class="grid-col-xs-6"><img src="img/logo.png"/></div>
+</div>
+*/
+
+
+.grid-row-box [class*=grid-col-xs-] img {
+	width: 100%;
+	height: 100%;
+}
+
+.grid-col-xs-1,
+.grid-col-xs-2,
+.grid-col-xs-3,
+.grid-col-xs-4,
+.grid-col-xs-5,
+.grid-col-xs-6,
+.grid-col-xs-7,
+.grid-col-xs-8,
+.grid-col-xs-9,
+.grid-col-xs-10,
+.grid-col-xs-11,
+.grid-col-sm-5 {
+	position: relative;
+	float: left;
+}
+
+.grid-col-xs-12 {
+	width: var(--width-all);
+	position: relative;
+}
+
+.grid-col-xs-11 {
+	width: 91.66666667%;
+}
+
+.grid-col-xs-10 {
+	width: 83.33333333%;
+}
+
+.grid-col-xs-9 {
+	width: 75%;
+}
+
+.grid-col-xs-8 {
+	width: 66.66666667%;
+}
+
+.grid-col-xs-7 {
+	width: 58.33333333%;
+}
+
+.grid-col-xs-6 {
+	width: calc(var(--width-all)/2);
+}
+
+.grid-col-xs-5 {
+	width: 41.66666667%;
+}
+
+.grid-col-xs-4 {
+	width: 33.33333333%;
+}
+
+.grid-col-xs-3 {
+	width: 25%;
+}
+
+.grid-col-xs-2 {
+	width: 16.66666667%;
+}
+
+.grid-col-xs-1 {
+	width: 8.33333333%;
+}
+
+.grid-col-sm-5 {
+	width: 20%;
+}

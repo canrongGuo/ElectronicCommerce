@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>意见反馈</title>
+    <link rel="stylesheet" type="text/css" href="../../css/aui/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/normal.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/font/public.css" />
+    <script type="text/javascript" src="../../script/normal.js"></script>
+    <script type="text/javascript" src="../../script/jquery-1.11.2.min.js"></script>
+    <style>
+        body {background: #f1f1f1;}
+        .content textarea{background: #fff;width: 90%;margin-left: 5%;height: 150px;font-size: 14px;padding:1% 2%;}
+        p.tip{padding:3% 5%;font-size: 12px;}
+        .picture{padding: 0 5%;}
+        .picture .addImg{width: 100px;height: 100px;background:#fff;text-align: center;line-height: 100px;float: left;margin-right: 5%;}
+        .picture .addImg i.iconfont{font-size: 50px;color: #999;}
+        .contact{padding: 3% 5%;}
+        .contact div.aui-col-xs-3{height: 44px;line-height: 44px;}
+        input[type="text"]{border-bottom: 1px solid #ddd;}
+        .button{padding:3%}
+        .button div{height: 40px;line-height: 40px;background: #26d6cc;color:#fff;text-align: center;border-radius: 5px;margin-top: 10%;}
+    </style>
+</head>
+
+<body>
+    <header>
+        <ul class="header">
+            <li class="border-b active">
+                <div class="header_btn" onclick="goback();" tapmode>
+                    <img class="addGroup" src="../../image/goback.png"/>
+                </div>
+                <span>意见反馈</span>
+            </li>
+        </ul>
+    </header>
+    <div class="headerLine"></div>
+    <div class="content">
+        <textarea placeholder="请填写10个字以上的问题反馈，已便我们为您提供更好的解决方案"></textarea>
+    </div>
+    <p class="tip">添加问题图片以便我们为您即时解决问题</p>
+    <div class="picture">
+        <div class="addImg" tapmode onclick="uploadLogo();">
+            <i class="icon iconfont">+</i>
+        </div>
+        <div style="clear:both"></div>
+    </div>
+    <!--联系方式-->
+    <div class="row contact">
+        <div class="aui-col-xs-3">联系方式</div>
+        <div class="aui-col-xs-9">
+            <input type="text" placeholder="请输入您的手机号吗或邮箱"/>
+        </div>
+        <div style="clear:both"></div>
+    </div>
+    <div class="button">
+        <div tapmode onclick="goback();">提交</div>
+    </div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+
+    };
+
+    //上传身份正
+    function uploadLogo(){
+        api.actionSheet({
+            // title: '底部弹出框测试',
+            cancelTitle: '取消',
+            buttons: ['从手机相册', '相机']
+        }, function(ret, err) {
+            var index = ret.buttonIndex;
+            if(index == 1 || index == 2){
+                openPic(index=="1"?"album":"camera");
+            }
+        });
+    }
+
+    //打开相册或者照相机
+    function openPic(type){
+        api.getPicture({
+            sourceType:type,
+            encodingType: 'jpg',
+            mediaValue: 'pic',
+            destinationType: 'url',
+            allowEdit: true,
+            quality: 100,
+            targetWidth: 200,
+            targetHeight: 200,
+            saveToPhotoAlbum: false
+        }, function(ret, err) {
+            if(!!ret.data || ret.data != ""){
+
+            }
+        });
+    }
+</script>
+
+</html>

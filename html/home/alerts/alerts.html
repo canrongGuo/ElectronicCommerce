@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../../../css/aui/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/normal.css" />
+    <script type="text/javascript" src="../../../script/normal.js"></script>
+    <script type="text/javascript" src="../../../script/api.js"></script>
+    <script type="text/javascript" src="../../../script/jquery-1.11.2.min.js"></script>
+    <style>
+        body{background: #fff;}
+        header.aui-bar.aui-bar-nav{background-color:#26d6cc;}
+        .alertList{height: 45px;line-height: 45px;}
+        .alertList li{position: relative;border-bottom: 1px solid #ddd;}
+        .alertList p{padding-left: 30px;}
+        .dot{display: inline-block;width: 0.4rem;height: 0.4rem;background: #ff2600;border-radius: 0.5rem;position: absolute;top: 19px;left: 10px;}
+    </style>
+</head>
+
+<body>
+    <header>
+        <ul class="header">
+            <li class="border-b active">
+                <div class="header_btn" onclick="goback();" tapmode >
+                    <img class="addGroup" src="../../../image/goback.png"/>
+                </div>
+                <span>消息通知</span>
+            </li>
+        </ul>
+    </header>
+    <div class="headerLine"></div>
+    <!--消息-->
+    <ul class="alertList">
+        <li>
+            <span class="dot"></span>
+            <p class="aui-ellipsis-1" tapmode onclick="openChildWin(this);">有人下单啦！手机尾号是9029刚才点餐黄焖鸡一份，快接受订单！</p>
+        </li>
+        <li>
+            <span class="dot"></span>
+            <p class="aui-ellipsis-1" onclick="openChildWin(this);">有人下单啦！手机尾号是9029刚才点餐黄焖鸡一份，快接受订单！</p>
+        </li>
+    </ul>
+</body>
+<script type="text/javascript">
+    apiready = function() {
+
+    };
+
+    //打开字窗口
+    function openChildWin(dom){
+        var content = $(dom).html();
+        api.openWin({
+            name: 'alertsDetail',
+            url: './alertsDetail.html',
+            pageParam: {
+                content:content
+            }
+        });
+
+    }
+</script>
+
+</html>

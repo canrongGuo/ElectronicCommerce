@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>首页</title>
+    <link rel="stylesheet" type="text/css" href="../../css/aui/aui.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="at.alicdn.com/t/font_659414_lde0e8ia8wku766r.css" /> -->
+    <link rel="stylesheet" type="text/css" href="../../css/aui/aui-slide.css" />
+    <script type="text/javascript" src="../../script/aui/aui-slide.js"></script>
+    <script type="text/javascript" src="../../script/aui/aui-tab.js"></script>
+    <script type="text/javascript" src="../../script/normal.js"></script>
+    <script type="text/javascript" src="../../script/jquery-1.11.2.min.js"></script>
+    <style>
+        *{font-family: "微软雅黑"}
+        .mariginLeft{margin-left: 10px;}
+        /*t头部*/
+        .header_box{position: fixed;width: 100%;z-index: 9999999;background: #26d6cc;}
+        header.aui-bar.aui-bar-nav,div.aui-searchbar{background-color:#26d6cc;}
+        .header_div{height: 68px;width: 100%;}
+        .header_line{height: 20px;width: 100%;background-color: #26d6cc;}
+        .wether_box{position: relative;}
+        .wether{margin-top: -5px;}
+        .wether_box span{font-size: 12px;line-height: 40px;padding-left: 6%; padding-top: 3px;text-align: center;}
+        .wether div{font-size: 10px;line-height: 0px;padding: 0;margin-top: 6px;}
+        header .aui-searchbar-input input{font-size: 13px}
+        .scanner{position: absolute;top: 0;right: 15px;width: 20px;padding-top: 12px;height: 44px;}
+        /*菜单*/
+        .aui-grid [class*=aui-col-]{padding:5px 0;}
+        .aui-grid .aui-grid-label{font-size: 12px;}
+        .menu .img_box{width: 40px;height: 40px;background-color: #2bb1f2;margin: 0 auto;border-radius: 50%;}
+        .menu .img_box img{width: 25px;margin: 0 auto;padding-top: 5px;}
+        .aui-col-xs-2{width:20%;}
+        .menu .aui-col-xs-2:nth-of-type(2) .img_box{background-color:#3bc09d;}
+        .menu .aui-col-xs-2:nth-of-type(3) .img_box{background-color:#9235d5;}
+        .menu .aui-col-xs-2:nth-of-type(4) .img_box{background-color:#fda62f;}
+        .menu .aui-col-xs-2:nth-of-type(4) .img_box img,
+        .menu .aui-col-xs-2:nth-of-type(9) .img_box img{padding-top: 8px;margin-left: 7px;}
+        .menu .aui-col-xs-2:nth-of-type(5) .img_box{background-color:#ff5358;}
+        .menu .aui-col-xs-2:nth-of-type(5) .img_box img,
+        .menu .aui-col-xs-2:nth-of-type(10) .img_box img{padding-top: 8px;}
+        .menu .aui-col-xs-2:nth-of-type(6) .img_box{background-color:#ff5358;}
+        .menu .aui-col-xs-2:nth-of-type(7) .img_box{background-color:#fda62f;}
+        .menu .aui-col-xs-2:nth-of-type(7) .img_box img{margin-left: 9px;padding-top: 9px;}
+        .menu .aui-col-xs-2:nth-of-type(8) .img_box{background-color:#9235d5;}
+        .menu .aui-col-xs-2:nth-of-type(8) .img_box img{padding-top: 8px;margin-left: 8px;}
+        .menu .aui-col-xs-2:nth-of-type(9) .img_box{background-color:#3bc09d;}
+        .menu .aui-col-xs-2:nth-of-type(10) .img_box{background-color:#ff5358;}
+        /*共享专区*/
+        .share{background: #fff;margin-top: 5px;}
+        .share div.aui-col-xs-6{padding: 10px;}
+        .share div.aui-col-xs-6.first{border-right: 1px solid #ddd;}
+        .share div .title{font-size: 22px;}
+        .fontSize19{font-size: 19px;}
+        .share div img.first{width: 60%;margin-left: 35%;}
+        .share div img.second{width: 60px;}
+        .activeArea{padding:0 5%;}
+        .activeArea:first-of-type{border-bottom:1px solid #ddd;}
+        /*推荐商家*/
+        .tuijian{margin-top: 5px;background-color: #fff;height: 45px;line-height: 45px;text-align: center;border-bottom: 1px solid #ddd;}
+        #businessList{border-bottom:1px solid #ddd;}
+        .score img.star{width: 18px;height: 18px;float: left;margin-top: 11px;}
+        .score_footer .label{border: 1px solid #26d6cc;border-radius: 5px;padding: 0px 10px;color: #26d6cc;font-size: 12px;}
+        .content{background: #fff;}
+        .content div{line-height: 20px;}
+        .content .name{line-height: 25px;font-size: 15px;}
+        .content .score{line-height: 40px;margin-top:-5px;}
+        .content p{margin-top: -5px;line-height: 38px;}
+        .content .score_footer{font-size: 11px;}
+        .content .list{padding: 10px;border-bottom:1px solid #ddd }
+        .content .list:last-of-type{padding: 10px;border-bottom:none;}
+        .content .list .list_content{text-align:left;padding-left: 10px;}
+    </style>
+</head>
+
+<body>
+    <!--头部-->
+    <div class="header_box">
+        <header class="aui-bar aui-bar-nav">
+            <div class="header_line"></div>
+            <div class="aui-pull-left wether_box">
+                <div class="wether">
+                    <i class="aui-iconfont"><img src="../../image/home/home_cloud.png" style="width:20px;"/></i>
+                    <div>28℃</div>
+                </div>
+                <span tapmode onclick="openChildWin('location');">郑州<i class="aui-iconfont aui-icon-down" style="font-size: 11px;font-weight: 700;padding: 0 3px;"></i></span>
+            </div>
+            <div class="aui-title" style="left:4rem;right: 2rem;">
+                <div class="aui-searchbar">
+                    <div class="aui-searchbar-input aui-border-radius">
+                        <i class="aui-iconfont aui-icon-search"></i>
+                        <input type="search" placeholder="请输入搜索内容" id="search-input">
+                        <div class="aui-searchbar-clear-btn">
+                             <i class="aui-iconfont aui-icon-close"></i>
+                        </div>
+                    </div>
+                    <div class="scanner" tapmode onclick="openScanner();">
+                        <img src="../../image/home/home_scanner.png"/>
+                    </div>
+                    <div class="aui-searchbar-btn" tapmode>取消</div>
+                </div>
+            </div>
+            <div class="aui-pull-right aui-btn" tapmode onclick="openChildWin('alerts/alerts');">
+                <img src="../../image/home/home_msg.png" style="width:22px;"/>
+            </div>
+        </header>
+    </div>
+    <div class="header_div"></div>
+    <!--轮播图-->
+    <div id="aui-slide">
+        <div class="aui-slide-wrap">
+            <div class="aui-slide-node bg-dark">
+                <img src="../../image/home/banner.jpg" />
+            </div>
+            <div class="aui-slide-node bg-dark">
+                <img src="../../image/home/banner.jpg" />
+            </div>
+            <div class="aui-slide-node bg-dark">
+                <img src="../../image/home/banner.jpg" />
+            </div>
+        </div>
+        <!--分页容器-->
+        <div class="aui-slide-page-wrap"></div>
+    </div>
+    <!--九宫格菜单-->
+    <section class="aui-grid">
+        <div class="aui-row menu" id="menu">
+            <div class="aui-col-xs-2" data-type="汤粥" tapmode onclick="openDetail(this);">
+                <div class="img_box">
+                    <img src="../../image/home/home_soup.png"/>
+                </div>
+                <div class="aui-grid-label">汤粥</div>
+            </div>
+            <div class="aui-col-xs-2" data-type="快餐" tapmode onclick="openDetail(this);">
+                <div class="img_box">
+                    <img src="../../image/home/home_kuaican.png"/>
+                </div>
+                <div class="aui-grid-label">快餐</div>
+            </div>
+            <div class="aui-col-xs-2" data-type="晚餐" tapmode onclick="openDetail(this);">
+                <div class="img_box">
+                    <img src="../../image/home/home_wancan.png"/>
+                </div>
+                <div class="aui-grid-label">晚餐</div>
+            </div>
+            <div class="aui-col-xs-2" data-type="夜宵" tapmode onclick="openDetail(this);">
+                <div class="img_box">
+                    <img src="../../image/home/home_yexiao.png"/>
+                </div>
+                <div class="aui-grid-label">夜宵</div>
+            </div>
+            <div class="aui-col-xs-2" data-type="家常菜" tapmode onclick="openDetail(this);">
+                <div class="img_box">
+                    <img src="../../image/home/home_jiacai.png"/>
+                </div>
+                <div class="aui-grid-label">家常菜</div>
+            </div>
+            <div class="aui-col-xs-2" data-type="甜点" tapmode onclick="openDetail(this);">
+                <div class="img_box">
+                    <img src="../../image/home/home_tiandian.png"/>
+                </div>
+                <div class="aui-grid-label">甜点</div>
+            </div>
+            <div class="aui-col-xs-2" data-type="西餐" tapmode onclick="openDetail(this);">
+                <div class="img_box">
+                    <img src="../../image/home/home_xican.png"/>
+                </div>
+                <div class="aui-grid-label">西餐</div>
+            </div>
+            <div class="aui-col-xs-2" data-type="小吃馆" tapmode onclick="openDetail(this);">
+                <div class="img_box">
+                    <img src="../../image/home/home_xiaochiguan.png"/>
+                </div>
+                <div class="aui-grid-label">小吃馆</div>
+            </div>
+            <div class="aui-col-xs-2" data-type="夜宵" tapmode onclick="openDetail(this);">
+                <div class="img_box">
+                    <img src="../../image/home/home_yexiao.png"/>
+                </div>
+                <div class="aui-grid-label">夜宵</div>
+            </div>
+            <div class="aui-col-xs-2" data-type="更多" tapmode onclick="openDetail(this);">
+                <div class="img_box">
+                    <img src="../../image/home/home_more.png"/>
+                </div>
+                <div class="aui-grid-label">更多</div>
+            </div>
+        </div>
+    </section>
+    <!--共享区-->
+    <div class="aui-row share">
+        <div class="aui-col-xs-6 first" tapmode onclick="openChildWin('share/shareList');">
+            <div class="title">共享专区</div>
+            <p>你我共同分享</p>
+            <img class="first" src="../../image/home/home_bike.png"/>
+        </div>
+        <div class="aui-col-xs-6" style="padding:0;">
+            <div class="aui-col-xs-12 activeArea" style="padding:3% 5%;">
+                <div class="aui-col-xs-7">
+                    <div class="fontSize19">活动专区</div>
+                    <p>好礼大放送</p>
+                </div>
+                <div class="aui-col-xs-5">
+                    <img class="second" src="../../image/home/home_fanguo.png"/>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+            <div class="aui-col-xs-12 activeArea">
+                <div class="aui-col-xs-7">
+                    <div class="fontSize19" style="line-height:75px;">M礼兑换</div>
+                </div>
+                <div class="aui-col-xs-5" style="margin-top: 10px;">
+                    <img class="second" src="../../image/home/home_fanguo.png"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--推荐商家-->
+    <div class="tuijian">————推荐商家————<div>
+    <div class="aui-tab" id="businessList">
+        <div class="aui-tab-item tapmode">综合排序<i class="aui-iconfont aui-icon-down" style="padding: 3px;font-weight:700;"></i></div>
+        <div class="aui-tab-item tapmode"><div></div>好评优先</div>
+        <div class="aui-tab-item tapmode">距离最近</div>
+        <div class="aui-tab-item tapmode">时间最短</div>
+    </div>
+    <!--外卖列表-->
+    <section class="content">
+        <div class="list" data-type="我呀便当（商定路店）" tapmode onclick="openStoreDetail(this);">
+            <div class="aui-col-xs-4">
+                <img src="../../image/home/home_chanpin.png"/>
+            </div>
+            <div class="aui-col-xs-8 list_content">
+                <div class="name aui-ellipsis-1">我呀便当（商定路店）</div>
+                <div class="score">
+                    <img class="star" src="../../image/home/home_star1.png"/>
+                    <img class="star" src="../../image/home/home_star1.png"/>
+                    <img class="star" src="../../image/home/home_star1.png"/>
+                    <img class="star" src="../../image/home/home_star1.png"/>
+                    <img class="star" src="../../image/home/home_star.png"/>
+                    <span class="mariginLeft">4分</span>
+                </div>
+                <p>单人餐，提供免费wifi</p>
+                <div class="score_footer">
+                    <div class="aui-col-xs-7">
+                        <span class="label">满减</span>
+                    </div>
+                    <div class="aui-col-xs-5">
+                        <span class="aui-col-xs-6">2.0km</span>
+                        <span class="aui-col-xs-6">35分钟</span>
+                    </div>
+                </div>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+        <div class="list" data-type="咱家饭店" tapmode onclick="openStoreDetail(this);">
+            <div class="aui-col-xs-4">
+                <img src="../../image/home/home_chanpin.png"/>
+            </div>
+            <div class="aui-col-xs-8 list_content">
+                <div class="name aui-ellipsis-1">咱家饭店</div>
+                <div class="score">
+                    <img class="star" src="../../image/home/home_star1.png"/>
+                    <img class="star" src="../../image/home/home_star1.png"/>
+                    <img class="star" src="../../image/home/home_star1.png"/>
+                    <img class="star" src="../../image/home/home_star1.png"/>
+                    <img class="star" src="../../image/home/home_star.png"/>
+                    <span class="mariginLeft">4分</span>
+                </div>
+                <p>单人餐，提供免费wifi</p>
+                <div class="score_footer">
+                    <div class="aui-col-xs-7">
+                        <span class="label">满减</span>
+                        <span class="label">加价购</span>
+                    </div>
+                    <div class="aui-col-xs-5">
+                        <span class="aui-col-xs-6">2.0km</span>
+                        <span class="aui-col-xs-6">35分钟</span>
+                    </div>
+                </div>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+    </section>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript">
+    var FNScanner = "";
+    apiready = function() {
+        FNScanner = api.require('FNScanner');
+        //优化点击事件
+        api.parseTapmode();
+    };
+
+    //打开商店详情页面
+    function openStoreDetail(dom){
+        var type = $(dom).attr("data-type");
+        openChildWin("store/storeDetail","{'title':'"+type+"'}");
+    }
+
+    //轮播图js
+    var slide = new auiSlide({
+        container:document.getElementById("aui-slide"),
+        // "width":300,
+        "height":215,
+        "speed":300,
+        "autoPlay": 3000,
+        "pageShow":true,
+        "pageStyle":'dot',
+        "loop":true,
+        'dotPosition':'right',
+        'currentPage':currentFun
+    })
+    function currentFun(index) {
+    }
+
+    //动态给菜单列表绑定点击事件
+    function openDetail(dom){
+        var type = $(dom).attr("data-type");
+        openChildWin("store/store","{'title':'"+type+"'}");
+    }
+
+    //打开二维码扫码页面
+    function openScanner(){
+        // FNScanner.open({
+        //     autorotation: true
+        // }, function(ret, err) {
+        //     if (ret) {
+        //         if(ret.eventType == "success"){
+        //             alert(ret.content);
+                    api.openWin({
+                        name: 'scannerDetail',
+                        url: './scannerDetail/scannerDetail.html',
+                        pageParam: {
+                            name: 'test'
+                        }
+                    });
+        //         }
+        //     }
+        // });
+    }
+</script>
+
+</html>

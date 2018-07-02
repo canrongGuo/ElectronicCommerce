@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>定位信息</title>
+    <link rel="stylesheet" type="text/css" href="../../css/aui/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/normal.css" />
+    <script type="text/javascript" src="../../script/normal.js"></script>
+    <script type="text/javascript" src="../../script/jquery-1.11.2.min.js"></script>
+    <style>
+        body{background: #fff;}
+        header.aui-bar.aui-bar-nav{background-color:#26d6cc;}
+        .location{height: 44px;line-height: 44px;border-bottom: 1px solid #ddd;}
+        .location img{width: 25px;float: left;margin: 0 10px;margin-top: 10px}
+    </style>
+</head>
+
+<body>
+    <!--头部-->
+    <header>
+        <ul class="header">
+            <li class="border-b active">
+                <div class="header_btn" onclick="goback();" tapmode >
+                    <img class="addGroup" src="../../image/goback.png"/>
+                </div>
+                <span>请选择城市</span>
+            </li>
+        </ul>
+    </header>
+    <div class="headerLine"></div>
+    <!--定位信息-->
+    <!-- <div class="location"><img src="../../image/home/home_location.png"/>点击定位到当前地址</div> -->
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+        api.parseTapmode();
+        getCityModel();
+    };
+
+    //加载城市列表模块
+    function getCityModel(){
+        var UIListCard = api.require('UICityList');
+        UIListCard.open({
+            rect : {
+                x : 0,
+                y : 64,
+                w : api.frameWidth,
+                h : api.frameHeight
+            },
+            resource: 'widget://res/UICityList.json',
+            styles: {
+                searchBar: {
+                    bgColor: '#f1f1f1',
+                    cancelColor: '#ddd'
+                },
+                location: {
+                    color: '#696969',
+                    size: 12
+                },
+                sectionTitle: {
+                    bgColor: '#eee',
+                    color: '#000',
+                    size: 12
+                },
+                item: {
+                    bgColor: '#fff',
+                    activeBgColor: '#696969',
+                    color: '#000',
+                    size: 14,
+                    height: 40
+                },
+                indicator: {
+                    bgColor: '#fff',
+                    color: '#696969'
+                }
+            },
+            currentCity: '北京',//当前位置
+            locationWay: '',
+            hotTitle: '热门城市',
+            fixedOn: api.frameName,
+            placeholder: '输入城市名或首字母查询'
+        }, function(ret, err) {
+            if (ret.eventType == "selected") {
+                alert(JSON.stringify(ret));
+            }
+        });
+    }
+
+
+    //获取当前定位
+    function getGeo () {
+        var baiduLocation = api.require('baiduLocation');
+        baiduLocation.startLocation({
+            accuracy: '100m',
+            filter:1,
+            autoStop: true
+        },function(ret, err){
+            var sta = ret.status;
+            var lat = ret.latitude;
+            var lon = ret.longitude;
+            var t = ret.timestamp;
+            if(sta){
+                var str = '经度：'+ lon +'\n';
+                str += '纬度：'+ lat +'\n';
+                alert(str);
+            } else{
+
+            }
+        });
+    }
+</script>
+
+</html>

@@ -1,0 +1,61 @@
+html里面
+card -- 共享卡部分
+home -- 首页
+mine -- 我的
+order -- 订单
+service -- 服务
+
+card：
+buyCard -- 购卡
+wxchangeCard -- 兑换卡
+qecode -- 刷码
+shareCard -- 分享卡
+uploadPic -- 上传个人照片
+
+home：
+	alerts：alerts -- 消息通知
+		alertsDetail -- 消息详情
+	
+	scannerDetail： goodsDatils -- 商品详情
+			payOrder -- 订单星系
+			scannerDetail -- 商家信息
+	share： shareList -- 享卡专区
+		shareShop -- 享卡商品信息
+		shopDetail -- 门店详情
+	store： bookOrder -- 预定详情
+		ollinBooking -- 在线预定
+		perferential -- 优惠菜品
+		store -- 商店列表
+		storeDetail -- 商店菜品详情
+	home -- 首页
+	location -- 定位页
+
+mine：
+	center：center -- 安全中心
+		loginPassword -- 修改登陆密码
+		payPassword -- 修改支付密码
+		phoneNumber -- 修改手机号码
+		phoneNumber_next -- 修改手机号码进入的子页面、
+		specil -- 修改手机号码若不知道手机号进入的子页面
+	
+	personal：addAddress -- 添加收货地址
+		  changeName -- 修改昵称
+		  changeSex -- 修改性别
+		  dataList -- 个人资料菜单也
+		  shippingAddr -- 收货地址
+	
+	promote：promote -- 我的推广
+		 qrcode -- 推广码
+
+	seller：agreement -- 商户协议
+		success -- 提交信息成功
+		uploadMsg -- 上传商户信息
+	
+	about -- 关于魔礼
+	certification -- 我的认证
+	collection -- 我的收藏
+	evaluation -- 我的评论
+	faceback -- 意见反馈
+	mine -- 我的菜单页
+	signin -- 打卡记录
+	version -- 版本信息

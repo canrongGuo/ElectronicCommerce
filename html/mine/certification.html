@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>认证</title>
+    <link rel="stylesheet" type="text/css" href="../../css/aui/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/normal.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/font/public.css" />
+    <script type="text/javascript" src="../../script/normal.js"></script>
+    <script type="text/javascript" src="../../script/jquery-1.11.2.min.js"></script>
+    <style>
+        body {}
+        .address ul li .sex span.aui-radio{border-color:#26d6cc;width: 20px;height: 20px;margin-top: 1.2%;position:relative;}
+        .address ul li .sex.active span.aui-radio i.circle{position: absolute;top:50%;left:50%;width: 10px;height: 10px;border-radius: 50%;background: #26d6cc;z-index: 9999;margin-top:-5px;margin-left: -5px;}
+        .button{padding:3%}
+        .button div{height: 40px;line-height: 40px;background: #26d6cc;color:#fff;text-align: center;border-radius: 5px;margin-top: 10%;}
+        .aui-list textarea{border: 1px solid #ddd;width: 95%;margin-left: 1%;}
+        .aui-list-item-title.title{margin-bottom: 10px;}
+        .aui-list-item-text.img img{width: 100%;}
+        .aui-list .aui-list-item:active{background: #fff;}
+        .button{padding: 0 3%}
+        .button div{height: 45px;line-height: 45px;background:#26d6cc;color: #fff;text-align: center;border-radius: 5px;}
+    </style>
+</head>
+
+<body>
+    <header>
+        <ul class="header">
+            <li class="border-b active">
+                <div class="header_btn" onclick="goback();" tapmode>
+                    <img class="addGroup" src="../../image/goback.png"/>
+                </div>
+                <span>我的认证</span>
+                <span class="addGroup text">修改</span>
+            </li>
+        </ul>
+    </header>
+    <div class="headerLine"></div>
+    <!--认证信息-->
+    <div class="address">
+        <ul class="aui-list aui-form-list">
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-label">真实姓名</div>
+                    <div class="aui-list-item-input">
+                        <input type="text" placeholder="请填写您的真实姓名">
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-label">性别</div>
+                    <div class="aui-list-item-input">
+                        <label class="sex" tapmode onclick="select(this);">
+                            <span>男</span>
+                            <span class="aui-radio">
+                                <i class="circle"></i>
+                            </span>
+                        </label>
+                        <label class="sex active" tapmode onclick="select(this);" style="margin-right:10px;">
+                            <span>女</span>
+                            <span class="aui-radio">
+                                <i class="circle"></i>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-label">联系电话</div>
+                    <div class="aui-list-item-input">
+                        <input type="text" placeholder="请填写您的联系电话">
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-label">出生日期</div>
+                    <div class="aui-list-item-input">
+                        <input type="date" placeholder="1995-07-07">
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-label">身份证号</div>
+                    <div class="aui-list-item-input">
+                        <input type="text" placeholder="请输入本人身份证号">
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item" tapmode onclick="selectArea();">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-label">居住地址</div>
+                    <div class="aui-list-item-input aui-list-item-arrow" id="areaName">河南省-郑州市-管城回族区</div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner">
+                    <textarea placeholder="详情地址"></textarea>
+                </div>
+            </li>
+        </ul>
+        <ul class="aui-list aui-media-list">
+            <li class="aui-list-item">
+                <div class="aui-media-list-item-inner">
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-text">
+                            <div class="aui-list-item-title title">身份证正面</div>
+                        </div>
+                        <div class="aui-list-item-text img" tapmode onclick="uploadLogo();">
+                            <img src="../../image/mine/uploadImg.png"/>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-media-list-item-inner">
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-text">
+                            <div class="aui-list-item-title title">身份证反面</div>
+                        </div>
+                        <div class="aui-list-item-text img" tapmode onclick="uploadLogo();">
+                            <img src="../../image/mine/uploadImg.png"/>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="button">
+        <div>提交申请</div>
+    </div>
+    <div style="height:30px;width:100%;"></div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript">
+    var addressView = "";
+    apiready = function() {
+        api.parseTapmode();
+        addressView = api.require('addressView');
+        addressView.open({
+            file_addr: 'widget://res/district.txt', //数据源地址
+            selected_color: '#ff0000', //颜色
+            pro_id: 410000, //省id
+            city_id: 410100, //市id
+            dir_id: 410104 //区id
+        });
+    };
+
+    //上传身份正
+    function uploadLogo(){
+        api.actionSheet({
+            // title: '底部弹出框测试',
+            cancelTitle: '取消',
+            buttons: ['从手机相册', '相机']
+        }, function(ret, err) {
+            var index = ret.buttonIndex;
+            if(index == 1 || index == 2){
+                openPic(index=="1"?"album":"camera");
+            }
+        });
+    }
+
+    //打开相册或者照相机
+    function openPic(type){
+        api.getPicture({
+            sourceType:type,
+            encodingType: 'jpg',
+            mediaValue: 'pic',
+            destinationType: 'url',
+            allowEdit: true,
+            quality: 100,
+            targetWidth: 200,
+            targetHeight: 200,
+            saveToPhotoAlbum: false
+        }, function(ret, err) {
+            if(!!ret.data || ret.data != ""){
+
+            }
+        });
+    }
+
+    //选择区域
+    function selectArea(){
+        addressView.show({}, function(ret, err) {
+            if (ret.status) {
+                var data = ret.data;
+                $("#areaName").html(data[0].name+"-"+data[1].name+"-"+data[2].name);
+            }
+        });
+    }
+
+    //选中
+    function select(dom){
+        $(dom).addClass("active").siblings().removeClass("active");
+    }
+</script>
+
+</html>

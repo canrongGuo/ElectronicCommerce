@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../../css/aui/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/normal.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/font/public.css" />
+    <script type="text/javascript" src="../../script/normal.js"></script>
+    <script type="text/javascript" src="../../script/jquery-1.11.2.min.js"></script>
+    <style>
+        body {font-family: "微软雅黑";}
+        .line{height: 5px;background: #e1e1e1;width: 100%;}
+        .rotate{-webkit-transform:rotate(90deg);transform:rotate(180deg);}
+        .daCard{height: 35px;line-height: 35px;color: #26d6cc;font-size: 14px;padding: 0 3%;}
+        .cumulative{text-align: center;color: #26d6cc;padding-bottom: 4%;}
+        .cumulative p{line-height: 35px;font-size: 16px;margin-top: -10px;}
+        .cumulative span:first-of-type{font-size: 100px;font-weight: bold;}
+        .calandar_head{width: 80%;margin-left: 10%;color: #666;}
+        .calandar_head div:nth-of-type(2){line-height: 35px;text-align: center;}
+        .calandar_head div:nth-of-type(2n-1){text-align: center;}
+        .calandar_head div:nth-of-type(2n-1) i{font-size:24px;}
+        .botton{padding:0 3%;position: fixed;bottom: 2%;left: 0;width: 100%;}
+        .botton div{height: 45px;line-height: 45px;background:#26d6cc;color: #fff;text-align: center;border-radius: 5px;}
+        /*弹出框*/
+        .modal{width: 100%;height: 100%;position: fixed;top: 0;left: 0;z-index: 999999;}
+        .modal.hidden{display: none;}
+        .modal .modal_bg{width: 100%;height: 100%;position: fixed;opacity: 0.25;}
+        .modal .m_content{position: absolute;z-index: 1000000;bottom: 10%;width: 65%;margin-left: 17.5%;}
+        .modal .m_content .m_body{margin: 0 auto;background: #fff;border-radius: 5px;}
+        .modal .m_content .m_body img{border-radius: 5px;width: 100%;}
+        .modal .msg{text-align: center;color: #444;font-size: 13px;}
+    </style>
+</head>
+
+<body>
+    <header>
+        <ul class="header">
+            <li class="border-b active">
+                <div class="header_btn" onclick="goback();" tapmode>
+                    <img class="addGroup" src="../../image/goback.png"/>
+                </div>
+                <span>打卡记录</span>
+            </li>
+        </ul>
+    </header>
+    <div class="headerLine"></div>
+    <!--日历-->
+    <div class="daCard">已打卡</div>
+    <div class="cumulative">
+        <span>2</span>
+        <span>天</span>
+        <p>本月累计打卡1天</p>
+        <p>本月已释放M点15</p>
+    </div>
+    <div class="line"></div>
+    <div class="row calandar_head">
+        <div class="aui-col-xs-2 rotate" taomode onclick="selectMonth('prevMonth');">
+            <i class="icon iconfont ">&#xe63f;</i>
+        </div>
+        <div class="aui-col-xs-8">年/月/日</div>
+        <div class="aui-col-xs-2" taomode onclick="selectMonth('nextMonth');">
+            <i class="icon iconfont">&#xe63f;</i>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+    <div class="botton" tapmode onclick="showSuccess();">
+        <div>立即打卡</div>
+    </div>
+    <!--打卡模板-->
+    <div class="modal hidden" id="shopModal">
+        <div class="modal_bg" tapmode onclick="closeWin();"></div>
+        <div class="m_content">
+            <div class="m_body msg">释放M+2</div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript">
+    var UICalendar = "";
+    apiready = function() {
+        api.parseTapmode();
+        initCalendat();
+    };
+
+    //打卡成功显示
+    function showSuccess(){
+        $("#shopModal").removeClass("hidden");
+    }
+
+    //关闭成功显示
+    function closeWin(){
+        $("#shopModal").addClass("hidden");
+    }
+
+    //切换月份
+    function selectMonth(type){
+        UICalendar[type](function(ret, err) {
+            if (ret) {
+                alert(JSON.stringify(ret));
+            } else {
+                alert(JSON.stringify(err));
+            }
+        });
+    }
+
+    //加载日历
+    function initCalendat(){
+        UICalendar = api.require('UICalendar');
+        var  height = $(".headerLine").height()+$(".daCard").height()+$(".cumulative").height()+$(".calandar_head").height();
+        UICalendar.open({
+            rect: {
+                x: api.frameWidth*0.1,
+                y: height+25,
+                w: api.frameWidth*0.8,
+                h: 200
+            },
+            styles: {
+                bg: 'rgba(0,0,0,0)',
+                week: {
+                    weekdayColor: '#3b3b3b',
+                    weekendColor: '#a8d400',
+                    size: 12
+                },
+                date: {
+                    color: '#3b3b3b',
+                    selectedColor: '#fff',
+                    selectedBg: '#a8d500',
+                    size: 12
+                },
+                today: {
+                    color: 'rgb(230,46,37)',
+                    bg: ''
+                },
+                specialDate: {
+                    color: '#fff',
+                    bg: '#26d6cc'
+                }
+            },
+            //记录已签到日子
+            specialDate: [
+                {date: '2018-05-01'},
+                {date: '2018-05-02'}
+            ],
+            switchMode: 'vertical',
+            fixedOn: api.frameName,
+            fixed: false
+        }, function(ret, err) {
+            if (ret) {
+                alert(JSON.stringify(ret));
+            } else {
+                alert(JSON.stringify(err));
+            }
+        });
+    }
+</script>
+
+</html>

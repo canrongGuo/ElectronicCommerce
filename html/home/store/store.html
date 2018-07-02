@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>店家商品-晚餐</title>
+    <link rel="stylesheet" type="text/css" href="../../../css/aui/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/normal.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/font/public.css" />
+    <script type="text/javascript" src="../../../script/normal.js"></script>
+    <script type="text/javascript" src="../../../script/jquery-1.11.2.min.js"></script>
+    <style>
+        body {}
+        /*推荐商家*/
+        .tuijian{margin-top: 5px;background-color: #fff;height: 45px;line-height: 45px;text-align: center;border-bottom: 1px solid #ddd;}
+        #businessList{border-bottom:1px solid #ddd;}
+        #businessList div.aui-tab-item.tapmode.active{color: #26d6cc;}
+        .score img.star{width: 18px;height: 18px;float: left;margin-top: 11px;}
+        .score_footer .label{border: 1px solid #26d6cc;border-radius: 5px;padding: 0px 10px;color: #26d6cc;font-size: 12px;}
+        .content{background: #fff;}
+        .content div{line-height: 20px;}
+        .content .name{line-height: 25px;font-size: 15px;}
+        .content .score{line-height: 40px;margin-top:-5px;}
+        .content p{margin-top: -5px;line-height: 38px;}
+        .content .score_footer{font-size: 11px;}
+        .content .list{padding: 10px;border-bottom:1px solid #ddd }
+        .content .listL:last-of-type{padding: 10px;border-bottom:none;}
+    </style>
+</head>
+
+<body>
+    <header>
+        <ul class="header">
+            <li class="border-b active">
+                <div class="header_btn" onclick="goback();" tapmode >
+                    <img class="addGroup" src="../../../image/goback.png"/>
+                </div>
+                <span id="title"></span>
+                <div class="addGroup">
+                    <img src="../../../image/search.png"/>
+                </div>
+            </li>
+        </ul>
+    </header>
+    <div class="headerLine"></div>
+    <!--店家商品-->
+    <div class="aui-tab" id="businessList">
+        <div class="aui-tab-item tapmode active">综合排序<i class="aui-iconfont aui-icon-down" style="padding: 3px;font-weight:700;"></i></div>
+        <div class="aui-tab-item tapmode"><div></div>好评优先</div>
+        <div class="aui-tab-item tapmode">距离最近</div>
+        <div class="aui-tab-item tapmode">时间最短</div>
+    </div>
+    <!--外卖列表-->
+    <section class="content" id="storeList">
+        <div class="list" data-type="我呀便当（商定路店）" tapmode onclick="openShops(this);">
+            <div class="aui-col-xs-4">
+                <img src="../../../image/home/home_chanpin.png"/>
+            </div>
+            <div class="aui-col-xs-8" style="text-align:left;padding-left: 10px;">
+                <div class="name aui-ellipsis-1">我呀便当（商定路店）</div>
+                <div class="score">
+                    <img class="star" src="../../../image/home/home_star1.png"/>
+                    <img class="star" src="../../../image/home/home_star1.png"/>
+                    <img class="star" src="../../../image/home/home_star1.png"/>
+                    <img class="star" src="../../../image/home/home_star1.png"/>
+                    <img class="star" src="../../../image/home/home_star.png"/>
+                    <span class="mariginLeft">4分</span>
+                </div>
+                <p>单人餐，提供免费wifi</p>
+                <div class="score_footer">
+                    <div class="aui-col-xs-7">
+                        <span class="label">满减</span>
+                    </div>
+                    <div class="aui-col-xs-5">
+                        <span class="aui-col-xs-6">2.0km</span>
+                        <span class="aui-col-xs-6">35分钟</span>
+                    </div>
+                </div>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+        <div class="list" data-type="咱家饭店" tapmode onclick="openShops(this);">
+            <div class="aui-col-xs-4">
+                <img src="../../../image/home/home_chanpin.png"/>
+            </div>
+            <div class="aui-col-xs-8" style="text-align:left;padding-left: 10px;">
+                <div class="name aui-ellipsis-1">咱家饭店</div>
+                <div class="score">
+                    <img class="star" src="../../../image/home/home_star1.png"/>
+                    <img class="star" src="../../../image/home/home_star1.png"/>
+                    <img class="star" src="../../../image/home/home_star1.png"/>
+                    <img class="star" src="../../../image/home/home_star1.png"/>
+                    <img class="star" src="../../../image/home/home_star1.png"/>
+                    <span class="mariginLeft">5分</span>
+                </div>
+                <p class="aui-ellipsis-1">单人餐，提供免费wifi，免费空调</p>
+                <div class="score_footer">
+                    <div class="aui-col-xs-7">
+                        <span class="label">满减</span>
+                        <span class="label">加价兑</span>
+                    </div>
+                    <div class="aui-col-xs-5">
+                        <span class="aui-col-xs-6">2.0km</span>
+                        <span class="aui-col-xs-6">35分钟</span>
+                    </div>
+                </div>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+    </section>
+</body>
+<script type="text/javascript" src="../../../script/api.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+        var title = api.pageParam.title;
+        $("#title").html(title);
+        api.parseTapmode();
+    };
+
+    //打开用餐类型的店家
+    function openShops(dom){
+        var type = $(dom).attr("data-type");
+        openChildWin("storeDetail","{'title':'"+type+"'}");
+    }
+</script>
+
+</html>

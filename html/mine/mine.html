@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>商户我的</title>
+    <link rel="stylesheet" href="../../css/public/api.css">
+    <link rel="stylesheet" href="../../css/mine/commercial2.css">
+    <script type="text/javascript" src="../../script/normal.js"></script>
+    <script type="text/javascript" src="../../script/jquery-1.11.2.min.js"></script>
+    <style media="screen">
+        .headers{position: fixed;width: 100%;z-index: 99999;top: 0;left: 0;background: #fff;}
+        .line{min-height: 252px;width: 100%;}
+        .header_line{height:15px;background:#22d1c7;width: 100%;border-bottom: 1px solid #22d1c7;}
+        .header-portrait img{border-radius: 50%;}
+    </style>
+</head>
+
+<body>
+    <div class="headers">
+        <header id="header" class="header _width">
+            <div class="header_line"></div>
+            <div class="header-bg">
+                <img src="../../image/mine/commercialBG.png" alt="头部背景">
+            </div>
+            <div class="header-top clearfix">
+                <span class="baiColor pull-right" tapmode onclick="openChildWin('personal/dataList');">个人资料</span>
+            </div>
+            <div class="header-portrait">
+                <img src="../../image/home/home_chanpin.png" alt="头像" width="65" height="65">
+            </div>
+        </header>
+        <div id="message">
+            <div class="message">
+                <div class="message-name _width clearfix ellipsis01">
+                    <span>宝宝</span>
+                    <i class="iconfont">&#xe609;</i>
+                </div>
+                <div class="message-audit _width">
+                    <span>审核中:</span>
+                    <em>诚信等级</em>
+                </div>
+                <div class="message-xing _width">
+                    <i class="iconfont">&#xe60d;</i>
+                    <i class="iconfont">&#xe60d;</i>
+                    <i class="iconfont">&#xe60d;</i>
+                    <i class="iconfont">&#xe60d;</i>
+                    <i class="iconfont">&#xe60d;</i>
+                    <span>4分</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="line"></div>
+    <!-- 功能板块 -->
+    <div id="function">
+        <div class="function">
+            <div class="function-each grid-row-box clearfix marginAuto">
+                <div class="grid-col-xs-4">
+                    <div class="function-block marginAuto" tapmode onclick="hrefURL('Wallet')">
+                        <div class="function-block-icon">
+                            <i class="iconfont" style="color:#B35AE0;">&#xe6c4;</i>
+                        </div>
+                        <div class="function-block-text">
+                            <span>钱包</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-col-xs-4">
+                    <div class="function-block marginAuto" tapmode onclick="hrefURL('cardBag')">
+                        <div class="function-block-icon">
+                            <i class="iconfont" style="color:#ff6668">&#xe61d;</i>
+                        </div>
+                        <div class="function-block-text">
+                            <span>卡包</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-col-xs-4">
+                    <div class="function-block marginAuto" tapmode onclick="hrefURL('bank')">
+                        <div class="function-block-icon">
+                            <i class="iconfont" style="color:#FFAA1A">&#xe6b3;</i>
+                        </div>
+                        <div class="function-block-text">
+                            <span>银行</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="function">
+        <div class="function">
+            <!-- 常用功能 -->
+            <div class="function-title marginAuto">常用功能</div>
+            <div class="function-each grid-row-box clearfix marginAuto">
+                <div class="grid-col-xs-3" tapmode onclick="openChildWin('signin');">
+                    <div class="function-block marginAuto">
+                        <div class="function-block-icon">
+                            <i class="iconfont" style="color:#FF6668;font-size:24px">&#xe62c;</i>
+                        </div>
+                        <div class="function-block-text">
+                            <span>签到</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-col-xs-3" tapmode onclick="openChildWin('certification');">
+                    <div class="function-block marginAuto">
+                        <div class="function-block-icon">
+                            <i class="iconfont" style="color:#1CBA62">&#xe62f;</i>
+                        </div>
+                        <div class="function-block-text">
+                            <span>认证</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-col-xs-3" tapmode onclick="openChildWin('center/center');">
+                    <div class="function-block marginAuto">
+                        <div class="function-block-icon">
+                            <i class="iconfont" style="color:#FFAA1A">&#xe606;</i>
+                        </div>
+                        <div class="function-block-text">
+                            <span>安全中心</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-col-xs-3" tapmode onclick="openChildWin('collection')">
+                    <div class="function-block marginAuto">
+                        <div class="function-block-icon">
+                            <i class="iconfont" style="color:#B35AE0">&#xe60d;</i>
+                        </div>
+                        <div class="function-block-text">
+                            <span>收藏</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-col-xs-3" tapmode onclick="openChildWin('promote/promote')">
+                    <div class="function-block marginAuto">
+                        <div class="function-block-icon">
+                            <i class="iconfont" style="color:#B35AE0;font-size:24px;">&#xe601;</i>
+                        </div>
+                        <div class="function-block-text">
+                            <span>我的推广</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-col-xs-3" tapmode onclick="openChildWin('evaluation')">
+                    <div class="function-block marginAuto">
+                        <div class="function-block-icon">
+                            <i class="iconfont" style="color:#FF6668;font-size29px;">&#xe60b;</i>
+                        </div>
+                        <div class="function-block-text">
+                            <span>我的评价</span>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+                <!-- 更多功能 -->
+                <div class="function-title marginAuto">更多功能</div>
+                <div class="function-each grid-row-box clearfix marginAuto" style="border:none">
+                  <div class="grid-col-xs-3" tapmode onclick="openChildWin('sellers/agreement');">
+                      <div class="function-block marginAuto">
+                          <div class="function-block-icon">
+                              <i class="iconfont" style="color:#FF6668;">&#xe634;</i>
+                          </div>
+                          <div class="function-block-text">
+                              <span>我是商家</span>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="grid-col-xs-3">
+                      <div class="function-block marginAuto" tapmode onclick="alert('暂没有该功能');">
+                          <div class="function-block-icon">
+                              <i class="iconfont" style="color:#3DC0F1">&#xe6fb;</i>
+                          </div>
+                          <div class="function-block-text">
+                              <span>我是骑手</span>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="grid-col-xs-3">
+                      <div class="function-block marginAuto" tapmode onclick="openChildWin('faceback');">
+                          <div class="function-block-icon">
+                              <i class="iconfont" style="color:#1CBA62;font-size:24px;">&#xe62a;</i>
+                          </div>
+                          <div class="function-block-text">
+                              <span>意见反馈</span>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="grid-col-xs-3">
+                      <div class="function-block marginAuto" tapmode onclick="openChildWin('about');">
+                          <div class="function-block-icon function-img-icon">
+                              <img src="../../image/mine/logoicon.png" alt="关于魔礼">
+                          </div>
+                          <div class="function-block-text">
+                              <span>关于魔礼</span>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="grid-col-xs-3">
+                      <div class="function-block marginAuto" tapmode onclick="call('10086');">
+                          <div class="function-block-icon">
+                              <i class="iconfont" style="color:#B35AE0;font-size:29px;">&#xe611;</i>
+                          </div>
+                          <div class="function-block-text">
+                              <span>联系客服</span>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="grid-col-xs-3">
+                      <div class="function-block marginAuto" tapmode onclick="openChildWin('version');">
+                          <div class="function-block-icon">
+                              <i class="iconfont" style="color:#FF6668">&#xe62e;</i>
+                          </div>
+                          <div class="function-block-text">
+                              <span>检查更新</span>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+                <!--  -->
+            </div>
+        </div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+
+    }
+
+    //跳转各页面
+    function hrefURL(eachURL){
+      if(eachURL == undefined){
+        alert("此功能暂未开放")
+      }else{
+        api.openWin({
+            name:eachURL,
+            url: '../commercialMy/'+ eachURL +'.html',
+            animation:{
+              type:"push",
+              subType:"from_right",
+              duration:300
+            }
+        });
+      }
+    }
+</script>
+
+</html>

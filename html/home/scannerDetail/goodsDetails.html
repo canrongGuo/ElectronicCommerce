@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>商品详情</title>
+    <link rel="stylesheet" type="text/css" href="../../../css/aui/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/normal.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/font/public.css" />
+    <script type="text/javascript" src="../../../script/normal.js"></script>
+    <script type="text/javascript" src="../../../script/jquery-1.11.2.min.js"></script>
+    <style>
+        body {background:#fff;}
+        header{background:none;position: absolute;height: 60px;width: 100%;}
+        /*商品基础信息*/
+        .fee{position: relative;padding: 5px 15px;}
+        .feeLine{height: 20px;background: #f1f1f1;}
+        .line{height: 10px;background: #f1f1f1;}
+        .fee div:nth-of-type(1){font-size: 20px;color: #555;}
+        .fee div:nth-of-type(2){color:red;font-size: 16px;}
+        .fee div:nth-of-type(3){font-size: 12px;text-decoration: line-through;}
+        .fee i.icon{position: absolute;top: 50%;right: 10px;margin-top: -20px;font-size: 30px;color: #5282c3;}
+        /*商品描述*/
+        .goodsDesc{padding: 10%;}
+        .goodsDesc div{text-indent:2em;color: #666;}
+        .goodsDesc div:first-of-type{height: 35px;line-height: 35px;text-indent:0;}
+    </style>
+</head>
+
+<body>
+    <header>
+        <ul class="header">
+            <li class="border-b active">
+                <div class="header_btn" onclick="goback();" tapmode >
+                    <img class="addGroup" src="../../../image/goback.png"/>
+                </div>
+                <span>商品详情</span>
+            </li>
+        </ul>
+    </header>
+    <div>
+        <img src="../../../image/menuDetail/goodDetail.png"/>
+    </div>
+    <!--餐品基础信息-->
+    <div class="feeLine"></div>
+    <div class="fee">
+        <div>一直秀（单人套餐）</div>
+        <div>￥：24.59</div>
+        <div>￥：24.59</div>
+        <i class="icon iconfont">&#xe65e;</i>
+    </div>
+    <div class="line"></div>
+    <!--商品描述-->
+    <div class="goodsDesc">
+        <div>商品描述</div>
+        <div>商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述</div>
+    </div>
+</body>
+<script type="text/javascript" src="../../../script/api.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+
+    };
+</script>
+
+</html>

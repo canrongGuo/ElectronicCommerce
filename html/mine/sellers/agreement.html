@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>商户协议</title>
+    <link rel="stylesheet" type="text/css" href="../../../css/aui/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/normal.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/font/public.css" />
+    <script type="text/javascript" src="../../../script/normal.js"></script>
+    <script type="text/javascript" src="../../../script/jquery-1.11.2.min.js"></script>
+    <style>
+        body {background: #f1f1f1;}
+        .content{position:absolute;top: 75px;left:0;background: #fff;width: 90%;margin-left:5%;height: 70%;padding: 2% 0;}
+        .content p.title{text-align: center;height: 40px;line-height: 40px;font-size: 16px;}
+        .content p.pcontent{padding: 0 3%;text-indent: 2em;}
+        /*按钮*/
+        .button{position: absolute;bottom: 3%;left: 0;width: 100%;padding: 0 6%;}
+        .button div{border: 1px solid #26d6cc;color: #26d6cc;padding: 2% 17%;border-radius: 5px;}
+        .button div.aui-pull-right{background:#26d6cc;color:#fff;}
+    </style>
+</head>
+
+<body>
+    <header>
+        <ul class="header">
+            <li class="border-b active">
+                <div class="header_btn" onclick="goback();" tapmode >
+                    <img class="addGroup" src="../../../image/goback.png"/>
+                </div>
+                <span>商户协议</span>
+            </li>
+        </ul>
+    </header>
+    <div class="headerLine"></div>
+    <!--协议内容-->
+    <div class="content" id="content">
+        <p class="title">商户须知协议</p>
+        <p class="pcontent">商户须知协议商户须知协议商户须知协议商户须知协议商户须知协议商户须知协议商户须知协议</p>
+    </div>
+    <!--按钮-->
+    <div class="button">
+        <div class="aui-pull-left" tapmode onclick="goback();">取消</div>
+        <div class="aui-pull-right" tapmode onclick="openChildWin('uploadMsg');">确定</div>
+    </div>
+</body>
+<script type="text/javascript" src="../../../script/api.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+        //计算头部高度
+        var height = $("header").height();
+        $("#content").css("top",height+15);
+    };
+</script>
+
+</html>

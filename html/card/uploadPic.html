@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>上传照片</title>
+    <link rel="stylesheet" type="text/css" href="../../css/aui/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/normal.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/font/public.css" />
+    <script type="text/javascript" src="../../script/normal.js"></script>
+    <script type="text/javascript" src="../../script/jquery-1.11.2.min.js"></script>
+    <style>
+        body {}
+        .declear{padding-bottom: 5%;border-bottom: 1px solid #ddd;}
+        .declear .title{height: 55px;line-height: 55px;text-align: center;}
+        .declear .content{padding: 0 5%;font-size: 12px;line-height: 22px;}
+        .declear .content p{text-align: center;line-height: 55px;height: 55px;}
+        /*上传*/
+        .upload p{text-align: center;line-height: 55px;}
+        .upload .upload_img{width: 150px;height: 150px;background: #ccc;border-radius: 50%;margin: 0 auto;margin-top: 10%;position: relative;}
+        .upload .upload_img i{position: absolute;top: 50%;left: 50%;font-size: 40px;color: #e1e1e1;margin-left: -25px;margin-top: -27px;}
+        .upload .upload_img p{position: absolute;bottom: 14px;left: 0;text-align: center;width: 100%;font-size: 12px;line-height: 20px;}
+        /*立即购买*/
+        .button{padding: 0 3%;margin-top: 15%;}
+        .button div{background: #888;color: #111;text-align: center;height: 40px;line-height: 40px;border-radius: 5px;font-size: 15px;}
+        .button div.active{background: #26d6cc;color: #fff;}
+    </style>
+</head>
+
+<body>
+    <header>
+        <ul class="header">
+            <li class="border-b active">
+                <div class="header_btn" onclick="goback();" tapmode >
+                    <img class="addGroup" src="../../image/goback.png"/>
+                </div>
+                <span>购买共享卡</span>
+            </li>
+        </ul>
+    </header>
+    <div class="headerLine"></div>
+    <!--说明-->
+    <div class="declear">
+        <p class="title">真实照片信息上传说明</p>
+        <p class="content">1.上传人必须严肃遵循平台规则，上传正确的照片（本人真实照片）实时做到一人一卡，不得将账号转借他人，请认真阅读平台享卡说明后进行使用！</p>
+        <p class="content">谢谢您的配合~</p>
+    </div>
+    <!--拍摄上传本人照片-->
+    <div class="upload">
+        <p>拍摄/上传本人真实照片</p>
+        <div class="upload_img" tapmode onclick="uploadPic(this)";>
+            <i class="icon iconfont">&#xe619;</i>
+            <p>上传/拍照</p>
+        </div>
+    </div>
+    <!--按钮-->
+    <div class="button" id="button">
+        <div>立即兑换</div>
+    </div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+
+    };
+
+    //立即兑换
+    function payOrder(){
+        var sysType = api.systemType;
+        openChildWin('qrcode',"{'type':'success'}");
+        if(sysType == "ios"){
+            setTimeout(function(){
+                api.closeWin({
+                    name: 'uploadPic'
+                });
+            },500);
+        }else{
+            api.closeWin({
+                name: 'uploadPic',
+                animation:{
+                    type:"none"             //动画过渡时间，默认300毫秒
+                }
+            });
+        }
+    }
+
+    //上传图片
+    function uploadPic(dom){
+        api.getPicture({
+            sourceType: 'camera',
+            encodingType: 'jpg',
+            mediaValue: 'pic',
+            destinationType: 'url',
+            allowEdit: true,
+            quality: 100,
+            targetWidth: 150,
+            targetHeight: 150,
+            saveToPhotoAlbum: false
+        }, function(ret, err) {
+            if(!!ret.data){
+                $("#button").attr({"topmode":"touchend"}).on("touchend",function(){
+                     payOrder();
+                }).children().addClass("active");
+                api.parseTapmode();
+                $(dom).css({"background":"url("+ret.data+")","background-size":"cover"});
+                $(dom).children().remove();
+            }
+        });
+    }
+</script>
+
+</html>

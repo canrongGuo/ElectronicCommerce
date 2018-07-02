@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>共享专区列表</title>
+    <link rel="stylesheet" type="text/css" href="../../../css/aui/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/normal.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/font/public.css" />
+    <script type="text/javascript" src="../../../script/normal.js"></script>
+    <script type="text/javascript" src="../../../script/jquery-1.11.2.min.js"></script>
+    <style>
+        body {}
+        .list .l_item .title{height: 45px;line-height: 45px;margin-top: 10px;border-bottom: 1px solid #ccc;padding: 0 5%;}
+        .list .l_item .content{padding: 3% 10%;}
+        .list .l_item .content .aui-col-xs-3{height: 40px;line-height: 40px;}
+    </style>
+</head>
+
+<body>
+    <header>
+        <ul class="header">
+            <li class="border-b active">
+                <div class="header_btn" onclick="goback();" tapmode >
+                    <img class="addGroup" src="../../../image/goback.png"/>
+                </div>
+                <span>享卡专区</span>
+            </li>
+        </ul>
+    </header>
+    <div class="headerLine"></div>
+    <div class="list">
+        <div class="row l_item">
+            <div class="title">美容美发</div>
+            <div class="content">
+                <div class="aui-col-xs-3" tapmode onclick="openChildWin('shareShop');">美发</div>
+                <div class="aui-col-xs-3" tapmode onclick="openChildWin('shareShop');">美甲</div>
+                <div class="aui-col-xs-3" tapmode onclick="openChildWin('shareShop');">美容</div>
+                <div class="aui-col-xs-3" tapmode onclick="openChildWin('shareShop');">祛痘</div>
+                <div class="aui-col-xs-3" tapmode onclick="openChildWin('shareShop');">彩妆</div>
+                <div class="aui-col-xs-3" tapmode onclick="openChildWin('shareShop');">塑形</div>
+                <div class="aui-col-xs-3" tapmode onclick="openChildWin('shareShop');">美睫</div>
+                <div style="clear:both;"></div>
+            </div>
+        </div>
+        <div class="row l_item">
+            <div class="title">美容美发</div>
+            <div class="content">
+                <div class="aui-col-xs-3">美发</div>
+                <div class="aui-col-xs-3">美甲</div>
+                <div class="aui-col-xs-3">美容</div>
+                <div class="aui-col-xs-3">祛痘</div>
+                <div class="aui-col-xs-3">彩妆</div>
+                <div class="aui-col-xs-3">塑形</div>
+                <div class="aui-col-xs-3">美睫</div>
+                <div style="clear:both;"></div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../../../script/api.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+
+    };
+</script>
+
+</html>
